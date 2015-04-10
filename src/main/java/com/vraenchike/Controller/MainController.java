@@ -73,7 +73,7 @@ public class MainController {
         PhotoDao photoDao = new PhotoDaoImpl();
         photoDao.createPhoto(p);
        // JSONObject jsonObject = new JSONObject()
-        return "saved!";
+        return "saved!!";
     }
 
 
