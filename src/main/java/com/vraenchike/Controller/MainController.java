@@ -1,5 +1,12 @@
 package com.vraenchike.Controller;
 
+import com.vraenchike.Model.Photo;
+import com.vraenchike.Model.TestModel;
+import com.vraenchike.Services.PhotoDao;
+import com.vraenchike.Services.PhotoDaoImpl;
+import com.vraenchike.Services.TestModelDAO;
+import com.vraenchike.Services.TestModelDAOImpl;
+import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -33,7 +40,9 @@ public class MainController {
 
         return "index";
     }
-    
+
+
+
     /*
     * Можно передать GET запросом
     * Перемножим 2 числа
@@ -53,4 +62,19 @@ public class MainController {
         }
         return val+"";//toString
     }
+
+
+    @RequestMapping(value = "/api/save-test-model",method = RequestMethod.GET)
+    @ResponseBody
+    String saveTestModel(@RequestParam("url") String url) {
+        Photo p =new Photo();
+        p.setUrl(url);
+
+        PhotoDao photoDao = new PhotoDaoImpl();
+        photoDao.createPhoto(p);
+       // JSONObject jsonObject = new JSONObject()
+        return "saved!";
+    }
+
+
 }
