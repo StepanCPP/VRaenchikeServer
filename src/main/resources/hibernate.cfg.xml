@@ -19,5 +19,12 @@
         <property name="show_sql">true</property>
         <!--<mapping class="com.vraenchike.Model.TestModel"/>-->
         <mapping class="com.vraenchike.Model.Photo"/>
+        <mapping class="com.vraenchike.Model.Place"/>
+        <mapping class="com.vraenchike.Model.User"/>
+        <mapping class="com.vraenchike.Model.Banned"/>
+        <mapping class="com.vraenchike.Model.UserBanned"/>
+        <mapping class="com.vraenchike.Model.UserLoginInfo"/>
+        <mapping class="com.vraenchike.Model.Photo"/>
+        <mapping class="com.vraenchike.Model.UserPlaces"/>
     </session-factory>
 </hibernate-configuration>

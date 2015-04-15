@@ -1,7 +1,7 @@
 package com.vraenchike.Controller;
 
-import com.vraenchike.Model.Photo;
-import com.vraenchike.Model.TestModel;
+import com.vraenchike.Model.*;
+import com.vraenchike.Services.DAO.DAOFactory;
 import com.vraenchike.Services.PhotoDao;
 import com.vraenchike.Services.PhotoDaoImpl;
 import com.vraenchike.Services.TestModelDAO;
@@ -10,6 +10,9 @@ import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+
+import javax.jws.soap.SOAPBinding;
+import java.sql.SQLException;
 
 /**
  * Created by Alexeev on 06-Apr-15.
@@ -66,15 +69,15 @@ public class MainController {
 
     @RequestMapping(value = "/api/save-test-model",method = RequestMethod.GET)
     @ResponseBody
-    String saveTestModel(@RequestParam("url") String url) {
+    String saveTestModel(@RequestParam("url") String url) throws SQLException {
         Photo p =new Photo();
         p.setUrl(url);
 
-        PhotoDao photoDao = new PhotoDaoImpl();
-        photoDao.createPhoto(p);
-       // JSONObject jsonObject = new JSONObject()
-        return "saved!!";
+       DAOFactory.getInstance().getPhotoDAO().addPhoto(p);
+        // JSONObject jsonObject = new JSONObject()
+        return "saved!";
     }
+
 
 
 }
