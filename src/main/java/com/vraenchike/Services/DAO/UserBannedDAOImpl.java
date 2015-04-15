@@ -28,7 +28,7 @@ public class UserBannedDAOImpl implements UserBannedDAO {
     public void updateUserBanned(Long user_banned_id, UserBanned user_banned) throws SQLException {
         Session session = null;
         session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
+        session.beginTransaction().commit();
         session.update(user_banned);
         session.getTransaction().commit();
         if (session != null && session.isOpen())

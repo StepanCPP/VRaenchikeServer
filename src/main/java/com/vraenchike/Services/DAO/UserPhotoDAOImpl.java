@@ -19,7 +19,7 @@ public class UserPhotoDAOImpl implements UserPhotoDAO {
         session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         session.save(user_photo);
-        session.getTransaction();
+        session.getTransaction().commit();
         if (session != null && session.isOpen())
             session.close();
     }

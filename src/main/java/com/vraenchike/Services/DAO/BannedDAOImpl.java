@@ -19,7 +19,7 @@ public class BannedDAOImpl implements BannedDAO {
         session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         session.save(banned);
-        session.getTransaction();
+        session.getTransaction().commit();
         if (session != null && session.isOpen())
             session.close();
     }

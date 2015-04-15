@@ -21,7 +21,7 @@ public class PlaceDAOImpl implements  PlaceDAO {
         session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         session.save(place);
-        session.getTransaction();
+        session.getTransaction().commit();
         if (session != null && session.isOpen())
         session.close();
     }

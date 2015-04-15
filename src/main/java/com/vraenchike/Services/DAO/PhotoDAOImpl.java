@@ -19,7 +19,7 @@ public class PhotoDAOImpl implements PhotoDAO {
         session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         session.save(photo);
-        session.getTransaction();
+        session.getTransaction().commit();
         if (session != null && session.isOpen())
             session.close();
     }

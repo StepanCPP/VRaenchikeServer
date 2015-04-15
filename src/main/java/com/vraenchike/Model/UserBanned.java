@@ -18,7 +18,7 @@ public class UserBanned {
     public void setIdUserBanned(int idUserBanned) {
         this.idUserBanned = idUserBanned;
     }
-    @Column (name = "getIdUser")
+    @Column (name = "IdUser")
     public int getIdUser() {
         return idUser;
     }

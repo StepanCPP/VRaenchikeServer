@@ -19,7 +19,7 @@ public class UserPlacesDAOImpl implements UserPlacesDAO {
         session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         session.save(user_places);
-        session.getTransaction();
+        session.getTransaction().commit();
         if (session != null && session.isOpen())
             session.close();
     }

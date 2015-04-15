@@ -19,7 +19,7 @@ public class UserLoginInfoDAOImpl implements UserLoginInfoDAO {
         session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         session.save(user_login_info);
-        session.getTransaction();
+        session.getTransaction().commit();
         if (session != null && session.isOpen())
             session.close();
     }
