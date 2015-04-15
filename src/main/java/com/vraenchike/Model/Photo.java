@@ -10,11 +10,9 @@ import javax.persistence.*;
 @Table(name = "photo")
 public class Photo {
     private int id;
-    private String url;
+    private String url = " ";
     private int likes=0;
     private int dislikes=0;
-
-
 
     @Id
     @Column(name = "idPhoto")
@@ -28,7 +26,7 @@ public class Photo {
     }
 
     @Column(name="URL")
-    public String getUrl() {
+    public String getUrl(){
         return url;
     }
 

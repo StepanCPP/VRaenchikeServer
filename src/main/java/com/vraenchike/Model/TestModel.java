@@ -9,8 +9,8 @@ import javax.persistence.*;
 @Table(name="test")
 public class TestModel {
     private int id;
-    private String key;
-    private String value;
+    private String key = " ";
+    private String value= " ";
 
     @Id
     @Column(name="id")
