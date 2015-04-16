@@ -1,13 +1,17 @@
 package com.vraenchike.Model;
+import org.hibernate.annotations.Parameter;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by Artyom on 15.04.2015.
  */
 @Entity
-public class User {
+@Table(name="user")
+public class User implements Serializable {
 
     @Column(name = "lastPhotoView", columnDefinition="DATETIME")
     @Temporal(TemporalType.TIMESTAMP)
@@ -15,15 +19,15 @@ public class User {
         return lastPhotoView;
     }
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @PrimaryKeyJoinColumn
+    @OneToOne(mappedBy = "user",cascade = CascadeType.ALL)
     public UserLoginInfo getUserLoginInfo() {
         return userLoginInfo;
     }
-
     public void setUserLoginInfo(UserLoginInfo userLoginInfo) {
         this.userLoginInfo = userLoginInfo;
     }
+
+
 
     public void setLastPhotoView(Date lastPhotoView) {
         this.lastPhotoView = lastPhotoView;
@@ -49,7 +53,12 @@ public class User {
     }
 
     private UserLoginInfo userLoginInfo;
-    private String user_name = " ";
+    private String user_name = "";
+
     private int idUser;
     private Date lastPhotoView = new Date();
+
+
+
+
 }

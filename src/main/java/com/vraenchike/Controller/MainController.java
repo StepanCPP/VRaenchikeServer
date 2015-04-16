@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.jws.soap.SOAPBinding;
 import java.sql.SQLException;
+import java.util.Collection;
+import java.util.Date;
 
 /**
  * Created by Alexeev on 06-Apr-15.
@@ -40,6 +42,24 @@ public class MainController {
     public String mainPage(ModelMap modelMap,@PathVariable(value = "pageno") String pageno)
     {
         modelMap.addAttribute("text",pageno);
+
+
+        User u = new User();
+        u.setUser_name("Albert");
+        u.setLastPhotoView(new Date());
+        UserLoginInfo userLoginInfo = new UserLoginInfo();
+        userLoginInfo.setLogin("asd");
+        userLoginInfo.setPass("asdqwe");
+
+
+        u.setUserLoginInfo(userLoginInfo);
+        userLoginInfo.setUser(u);
+
+        try {
+            DAOFactory.getInstance().getUserDAO().addUser(u);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         return "index";
     }
@@ -78,6 +98,24 @@ public class MainController {
         return "saved!";
     }
 
+    public static void main(String[] args) throws SQLException {
+       /* User u = new User();
+        u.setUser_name("Albert");
+        u.setLastPhotoView(new Date());
+        UserLoginInfo userLoginInfo = new UserLoginInfo();
+        userLoginInfo.setLogin("asd");
+        userLoginInfo.setPass("asdqwe");
 
+        userLoginInfo.setUser(u);
+        u.setUserLoginInfo(userLoginInfo);
+
+
+        DAOFactory.getInstance().getUserDAO().addUser(u);*/
+        Collection allUsers = DAOFactory.getInstance().getUserDAO().getAllUsers();
+        for(Object usr : allUsers){
+            System.out.println(((User)usr));
+        }
+
+    }
 
 }
