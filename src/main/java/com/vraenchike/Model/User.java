@@ -15,6 +15,16 @@ public class User {
         return lastPhotoView;
     }
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @PrimaryKeyJoinColumn
+    public UserLoginInfo getUserLoginInfo() {
+        return userLoginInfo;
+    }
+
+    public void setUserLoginInfo(UserLoginInfo userLoginInfo) {
+        this.userLoginInfo = userLoginInfo;
+    }
+
     public void setLastPhotoView(Date lastPhotoView) {
         this.lastPhotoView = lastPhotoView;
     }
@@ -38,6 +48,7 @@ public class User {
         this.idUser = idUser;
     }
 
+    private UserLoginInfo userLoginInfo;
     private String user_name = " ";
     private int idUser;
     private Date lastPhotoView = new Date();

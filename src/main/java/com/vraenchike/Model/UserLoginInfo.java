@@ -15,6 +15,15 @@ public class UserLoginInfo {
         return idUserLoginInfo;
     }
 
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public void setIdUserLoginInfo(int idUserLoginInfo) {
         this.idUserLoginInfo = idUserLoginInfo;
     }
@@ -51,6 +60,7 @@ public class UserLoginInfo {
         User_idUser = user_idUser;
     }
 
+    private User user;
     private int idUserLoginInfo;
     private int idUser;
     private String login = " ";
