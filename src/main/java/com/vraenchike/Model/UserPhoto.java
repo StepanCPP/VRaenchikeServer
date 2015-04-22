@@ -34,23 +34,8 @@ public class UserPhoto {
     public void setIdPhoto(int idPhoto) {
         this.idPhoto = idPhoto;
     }
-    @Column (name = "Photo_idPhoto")
-    public int getPhoto_idPhoto() {
-        return Photo_idPhoto;
-    }
 
-    public void setPhoto_idPhoto(int photo_idPhoto) {
-        Photo_idPhoto = photo_idPhoto;
-    }
-    @Column (name = "UserIdUser")
-    public int getUserIdUser() {
-        return UserIdUser;
-    }
-
-    public void setUserIdUser(int userIdUser) {
-        UserIdUser = userIdUser;
-    }
-    @Column (name = "type")
+    @Column (name = "type", nullable = false, columnDefinition = "undefined")
     public String getType() {
         return type;
     }
@@ -62,7 +47,6 @@ public class UserPhoto {
     private int idUserPhoto;
     private int idUser;
     private int idPhoto;
-    private int Photo_idPhoto;
-    private int UserIdUser;
-    private String type = " ";
+
+    private String type = "hi bro";
 }

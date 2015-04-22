@@ -1,6 +1,8 @@
 package com.vraenchike.Model;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by Artyom on 15.04.2015.
@@ -26,36 +28,20 @@ public class UserPlaces {
     public void setIdUser(int idUser) {
         this.idUser = idUser;
     }
-    @Column (name = "Place_idPlace")
-    public int getPlace_idPlace() {
-        return Place_idPlace;
-    }
 
-    public void setPlace_idPlace(int place_idPlace) {
-        Place_idPlace = place_idPlace;
-    }
-    @Column (name = "User_idUser")
-    public int getUser_idUser() {
-        return User_idUser;
-    }
-
-    public void setUser_idUser(int user_idUser) {
-        User_idUser = user_idUser;
-    }
     @Column (name = "idPlace")
-    public String getIdPlace() {
+    public int getIdPlace() {
         return idPlace;
     }
-
-    public void setIdPlace(String idPlace) {
+    public void setIdPlace(int idPlace) {
         this.idPlace = idPlace;
     }
-
     private int idUserPlaces;
     private int idUser;
-    // is that a valid type? does string can be an id? TODO
-    private String idPlace = " " ;
-    private int User_idUser;
-    private int Place_idPlace;
+    private int idPlace ;
+    //mapping privates
+
+    private Set<User> users = new HashSet<>();
+
 
 }

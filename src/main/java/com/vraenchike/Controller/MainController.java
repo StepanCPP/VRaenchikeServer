@@ -13,8 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.jws.soap.SOAPBinding;
 import java.sql.SQLException;
-import java.util.Collection;
-import java.util.Date;
+import java.util.*;
 
 /**
  * Created by Alexeev on 06-Apr-15.
@@ -99,23 +98,35 @@ public class MainController {
     }
 
     public static void main(String[] args) throws SQLException {
-       /* User u = new User();
-        u.setUser_name("Albert");
+        User u = new User();
+        u.setUser_name("sds");
         u.setLastPhotoView(new Date());
-        UserLoginInfo userLoginInfo = new UserLoginInfo();
-        userLoginInfo.setLogin("asd");
-        userLoginInfo.setPass("asdqwe");
 
-        userLoginInfo.setUser(u);
-        u.setUserLoginInfo(userLoginInfo);
+        User u1 = new User();
+        u.setUser_name("sdssdd");
+        u.setLastPhotoView(new Date());
 
 
-        DAOFactory.getInstance().getUserDAO().addUser(u);*/
-        Collection allUsers = DAOFactory.getInstance().getUserDAO().getAllUsers();
-        for(Object usr : allUsers){
-            System.out.println(((User)usr));
+        Banned b = new Banned();
+        b.setLink("betka");
+        System.out.println("done");
+
+        Set<User> users = new HashSet<>();
+        users.add(u);
+        users.add(u1);
+        b.setUsersbanned(users);
+        DAOFactory.getInstance().getBannedDAO().addBanned(b);
+
+
+
+      // Collection allUsers = DAOFactory.getInstance().getUserDAO().getAllUsers();
+      //  for(Object usr : allUsers){
+        //    System.out.println(((User)usr));
+
+
+
         }
 
     }
 
-}
+

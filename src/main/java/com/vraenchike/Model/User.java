@@ -1,10 +1,10 @@
 package com.vraenchike.Model;
-import org.hibernate.annotations.Parameter;
-import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by Artyom on 15.04.2015.
@@ -51,12 +51,41 @@ public class User implements Serializable {
     public void setIdUser(int idUser) {
         this.idUser = idUser;
     }
+    //many ot many relationship
+
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "users")
+        public Set<Photo> getPhotos() {
+        return photos;
+    }
+
+    public void setPhotos(Set<Photo> photos) {
+        this.photos = photos;
+    }
+    @ManyToMany(fetch =  FetchType.LAZY, mappedBy = "usersbanned")
+    public Set <Banned> getBanned() {
+        return banned;
+    }
+
+    public void setBanned(Set<Banned> banned) {
+        this.banned = banned;
+    }
+    @ManyToMany(fetch =  FetchType.LAZY, mappedBy = "userplaces")
+    public Set<Place> getPlaces() {
+        return places;
+    }
+
+    public void setPlaces(Set<Place> places) {
+        this.places = places;
+    }
 
     private UserLoginInfo userLoginInfo;
     private String user_name = "";
-
     private int idUser;
     private Date lastPhotoView = new Date();
+    //mapping privates
+    private Set<Place> places = new HashSet<>();
+    private Set<Photo> photos = new HashSet<>();
+    private Set<Banned> banned = new HashSet<>();
 
 
 

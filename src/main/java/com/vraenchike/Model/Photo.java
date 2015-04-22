@@ -5,6 +5,8 @@ package com.vraenchike.Model;
  */
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "photo")
@@ -13,6 +15,9 @@ public class Photo {
     private String url = " ";
     private int likes=0;
     private int dislikes=0;
+    private Set <User> users = new HashSet<User>();
+
+
 
     @Id
     @Column(name = "idPhoto")
@@ -50,5 +55,47 @@ public class Photo {
 
     public void setDislikes(int dislikes) {
         this.dislikes = dislikes;
+    }
+
+
+    /////many to many retaionship
+
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "userphoto", joinColumns = {
+            @JoinColumn(name = "idPhoto", nullable = false, updatable = false) },
+            inverseJoinColumns = { @JoinColumn(name = "idUSer",
+                    nullable = false, updatable = false) })
+    public Set <User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Photo photo = (Photo) o;
+
+        if (id != photo.id) return false;
+        if (likes != photo.likes) return false;
+        if (dislikes != photo.dislikes) return false;
+        if (url != null ? !url.equals(photo.url) : photo.url != null) return false;
+        return !(users != null ? !users.equals(photo.users) : photo.users != null);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (url != null ? url.hashCode() : 0);
+        result = 31 * result + likes;
+        result = 31 * result + dislikes;
+        result = 31 * result + (users != null ? users.hashCode() : 0);
+        return result;
     }
 }
