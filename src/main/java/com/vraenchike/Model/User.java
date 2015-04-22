@@ -69,7 +69,7 @@ public class User implements Serializable {
     public void setBanned(Set<Banned> banned) {
         this.banned = banned;
     }
-    @ManyToMany(fetch =  FetchType.LAZY, mappedBy = "userplaces")
+    @ManyToMany(fetch =  FetchType.LAZY, mappedBy = "users")
     public Set<Place> getPlaces() {
         return places;
     }
