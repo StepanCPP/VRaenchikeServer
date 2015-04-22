@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4d616cf9-aa0d-4dc7-b4b1-b6c1e8997386" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/vraenchike/Model/User.java" afterPath="$PROJECT_DIR$/src/main/java/com/vraenchike/Model/User.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="VRaenchike.iws" />
@@ -1238,7 +1237,7 @@
       <workItem from="1429256463192" duration="28000" />
       <workItem from="1429284467006" duration="3741000" />
       <workItem from="1429447667267" duration="12355000" />
-      <workItem from="1429700048262" duration="2911000" />
+      <workItem from="1429700048262" duration="2938000" />
     </task>
     <task id="LOCAL-00001" summary="inital commit">
       <created>1428269737959</created>
@@ -1312,11 +1311,17 @@
       <option name="project" value="LOCAL" />
       <updated>1429728769162</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="annotation exception fixed">
+      <created>1429730366745</created>
+      <option name="number" value="00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1429730366745</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71087000" />
+    <option name="totallyTimeSpent" value="71114000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1378" height="744" extended-state="0" />
@@ -1374,7 +1379,8 @@
     <MESSAGE value="DAO" />
     <MESSAGE value="DB added" />
     <MESSAGE value="many to many implemented" />
-    <option name="LAST_COMMIT_MESSAGE" value="many to many implemented" />
+    <MESSAGE value="annotation exception fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="annotation exception fixed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
