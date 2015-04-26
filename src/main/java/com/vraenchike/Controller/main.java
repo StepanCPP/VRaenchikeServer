@@ -2,6 +2,7 @@ package com.vraenchike.Controller;
 
 import java.util.Scanner;
 
+/*CHE ZA GOVNOKOD*/
 
 public class main {
     public static void main(String[] args) {
