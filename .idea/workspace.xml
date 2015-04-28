@@ -2,12 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4d616cf9-aa0d-4dc7-b4b1-b6c1e8997386" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/vraenchike/Services/MyUserDetailsService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/vraenchike/Config/SecurityConfig.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/vraenchike/Model/SecurityUserRole.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/vraenchike/Config/SecurityWebApplicationInitializer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/VRaenchike.iml" afterPath="$PROJECT_DIR$/VRaenchike.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="VRaenchike.iws" />
@@ -1110,7 +1104,7 @@
       <workItem from="1429447667267" duration="12355000" />
       <workItem from="1429700048262" duration="2938000" />
       <workItem from="1429808926500" duration="5462000" />
-      <workItem from="1430038244079" duration="17495000" />
+      <workItem from="1430038244079" duration="17609000" />
     </task>
     <task id="LOCAL-00001" summary="inital commit">
       <created>1428269737959</created>
@@ -1196,11 +1190,17 @@
       <option name="project" value="LOCAL" />
       <updated>1430039812779</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="security stuff">
+      <created>1430234269428</created>
+      <option name="number" value="00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1430234269428</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="94071000" />
+    <option name="totallyTimeSpent" value="94185000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="-4" width="1374" height="732" extended-state="6" />
@@ -1262,7 +1262,8 @@
     <MESSAGE value="DB added" />
     <MESSAGE value="many to many implemented" />
     <MESSAGE value="annotation exception fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="annotation exception fixed" />
+    <MESSAGE value="security stuff" />
+    <option name="LAST_COMMIT_MESSAGE" value="security stuff" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
