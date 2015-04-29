@@ -2,7 +2,9 @@ package com.vraenchike.Services.DAO;
 
 import com.vraenchike.Model.Photo;
 import com.vraenchike.Util.HibernateUtil;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -66,6 +68,18 @@ public class PhotoDAOImpl implements PhotoDAO {
         session.getTransaction().commit();
         if (session != null && session.isOpen())
             session.close();
+
+    }
+
+    public Photo getByURL(String url){
+        Session session = null;
+        Photo p = null;
+        session = HibernateUtil.getSessionFactory().openSession();
+        Criteria criteria = session.createCriteria(Photo.class);
+        p = (Photo)criteria.add(Restrictions.eq("url", url))
+                .uniqueResult();
+
+        return p;
 
     }
 }

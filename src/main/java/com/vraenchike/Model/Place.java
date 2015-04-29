@@ -1,5 +1,8 @@
 package com.vraenchike.Model;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -10,7 +13,15 @@ import java.util.Set;
 @Entity
 public class Place {
 
+    public Place(double lng, double lat, int radius, String name) {
+        this.lng = lng;
+        this.lat = lat;
+        this.radius = radius;
+        this.name = name;
+    }
 
+    public Place() {
+    }
 
     @Column(name="lng")
     public double getLng() {
@@ -37,7 +48,6 @@ public class Place {
     public void setRadius(int radius) {
         this.radius = radius;
     }
-
 
     @Id
     @Column(name = "idPlace")
@@ -74,9 +84,33 @@ public class Place {
         this.users = users;
     }
 
+    @Override
+    public String toString() {
+        return this.name;
+    }
+    @Column (name = "place_name")
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public JSONObject toJSONObject() throws JSONException {
+        org.json.JSONObject jo = new JSONObject();
+        jo.put("idPlace",id);
+        jo.put("lng",lng);
+        jo.put("lat",lat);
+        jo.put("place_name",name);
+        return jo;
+
+    }
+
     private Set<User> users = new HashSet<>();
     private double lng;
     private double lat;
     private int radius;
     private int id;
+    private String name;
 }

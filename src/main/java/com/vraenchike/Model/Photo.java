@@ -4,13 +4,18 @@ package com.vraenchike.Model;
  * Created by Alexeev on 10-Apr-15.
  */
 
+import com.vraenchike.Services.JSON.JSONable;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "photo")
-public class Photo {
+public class Photo  {
     private int id;
     private String url = " ";
     private int likes=0;
@@ -97,5 +102,13 @@ public class Photo {
         result = 31 * result + dislikes;
         result = 31 * result + (users != null ? users.hashCode() : 0);
         return result;
+    }
+
+    public JSONObject toJSONObject() throws JSONException {
+            org.json.JSONObject jo = new JSONObject();
+            jo.put("url",url);
+            jo.put("likes",likes);
+            jo.put("dislikes",dislikes);
+            return jo;
     }
 }

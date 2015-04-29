@@ -14,4 +14,5 @@ public interface PhotoDAO {
     public Photo getPhotoById(Long photo_id) throws SQLException;
     public Collection getAllPhotos() throws SQLException;
     public void deletePhoto(Photo photo) throws SQLException;
+    public Photo getByURL(String url) throws  SQLException;
 }

@@ -1,7 +1,12 @@
 package com.vraenchike.Model;
 
+import com.vraenchike.Services.JSON.JSONable;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -11,7 +16,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name="user")
-public class User implements Serializable {
+public class User implements Serializable,JSONable {
 
     @Column(name = "lastPhotoView", columnDefinition="DATETIME")
     @Temporal(TemporalType.TIMESTAMP)
@@ -61,10 +66,7 @@ public class User implements Serializable {
     public void setPhotos(Set<Photo> photos) {
         this.photos = photos;
     }
-    @ManyToMany(fetch =  FetchType.LAZY, mappedBy = "usersbanned")
-    public Set <Banned> getBanned() {
-        return banned;
-    }
+
 
     public void setBanned(Set<Banned> banned) {
         this.banned = banned;
@@ -78,6 +80,11 @@ public class User implements Serializable {
         this.places = places;
     }
 
+    @Override
+    public String toString() {
+        return this.user_name;
+    }
+
     private UserLoginInfo userLoginInfo;
     private String user_name = "";
     private int idUser;
@@ -88,6 +95,19 @@ public class User implements Serializable {
     private Set<Banned> banned = new HashSet<>();
 
 
+    public JSONObject toJSONObject() throws JSONException {
+        JSONObject jo = new JSONObject();
+        jo.put("idUSer",idUser);
+        jo.put("lastPhotoView",lastPhotoView);
+        jo.put("username",user_name);
+
+        return jo;
+
+    }
+@OneToMany (fetch = FetchType.LAZY, mappedBy = "user")
+    public Set<Banned> getBanned() {
+        return banned;
+    }
 
 
 }

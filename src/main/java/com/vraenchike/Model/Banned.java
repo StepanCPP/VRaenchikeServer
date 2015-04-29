@@ -1,5 +1,10 @@
 package com.vraenchike.Model;
 
+import com.vraenchike.Services.JSON.JSONable;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -8,15 +13,15 @@ import java.util.Set;
  * Created by Artyom on 15.04.2015.
  */
 @Entity
-public class Banned {
+public class Banned  {
 
-    @Column (name = "link")
-    public String getLink() {
-        return link;
+    @Column (name = "linkVK")
+    public String getLinkVk() {
+        return linkVk;
     }
 
-    public void setLink(String link) {
-        this.link = link;
+    public void setLinkVk(String link) {
+        this.linkVk = link;
     }
     @Id
     @Column (name = "idBanned")
@@ -24,28 +29,31 @@ public class Banned {
     public int getIdBanned() {
         return idBanned;
     }
+    @Column (name = "linkInsta")
+    public String getLinkInsta() {
+        return linkInsta;
+    }
+
+    public void setLinkInsta(String linkInsta) {
+        this.linkInsta = linkInsta;
+    }
 
     public void setIdBanned(int idBanned) {
         this.idBanned = idBanned;
     }
-
-    //many to many relationship
-
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "userbanned",  joinColumns = {
-            @JoinColumn(name = "idBanned", nullable = false, updatable = false) },
-            inverseJoinColumns = { @JoinColumn(name = "idUser",
-                    nullable = false, updatable = false) })
-    public Set<User> getUsersbanned() {
-        return usersbanned;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idBanned", nullable = false, insertable = false, updatable = false)
+    public User getUser() {
+        return user;
     }
 
-    public void setUsersbanned(Set<User> usersbanned) {
-        this.usersbanned = usersbanned;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     private int idBanned;
-    private String link  = " ";
-    private Set<User> usersbanned = new HashSet<>();
+    private String linkVk = " ";
+    private String linkInsta = " ";
+    private User user = new User();
 
 }

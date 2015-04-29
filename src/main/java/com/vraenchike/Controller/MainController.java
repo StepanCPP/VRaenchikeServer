@@ -2,16 +2,11 @@ package com.vraenchike.Controller;
 
 import com.vraenchike.Model.*;
 import com.vraenchike.Services.DAO.DAOFactory;
-import com.vraenchike.Services.PhotoDao;
-import com.vraenchike.Services.PhotoDaoImpl;
-import com.vraenchike.Services.TestModelDAO;
-import com.vraenchike.Services.TestModelDAOImpl;
-import org.json.JSONObject;
+import org.json.JSONException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
-import javax.jws.soap.SOAPBinding;
 import java.sql.SQLException;
 import java.util.*;
 
@@ -98,28 +93,12 @@ public class MainController {
     }
 
     public static void main(String[] args) throws SQLException {
-        User u = new User();
-        u.setUser_name("sds");
-        u.setLastPhotoView(new Date());
-
-        User u1 = new User();
-        u.setUser_name("sdssdd");
-        u.setLastPhotoView(new Date());
+        Photo p = null;
+        p = DAOFactory.getInstance().getPhotoDAO().getByURL("1");
+        System.out.println(p.getUrl());
 
 
-        Banned b = new Banned();
-        b.setLink("betka");
-        System.out.println("done");
-
-        Set<User> users = new HashSet<>();
-        users.add(u);
-        users.add(u1);
-        b.setUsersbanned(users);
-        DAOFactory.getInstance().getBannedDAO().addBanned(b);
-
-
-
-      // Collection allUsers = DAOFactory.getInstance().getUserDAO().getAllUsers();
+        // Collection allUsers = DAOFactory.getInstance().getUserDAO().getAllUsers();
       //  for(Object usr : allUsers){
         //    System.out.println(((User)usr));
 

@@ -48,5 +48,5 @@ public class UserPhoto {
     private int idUser;
     private int idPhoto;
 
-    private String type = "hi bro";
+    private String type = "hi bro"; //TODO to solvse this field 
 }
