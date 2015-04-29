@@ -22,6 +22,14 @@ public class Photo  {
     private int dislikes=0;
     private Set <User> users = new HashSet<User>();
 
+    public Photo(String url, int likes, int dislikes) {
+        this.url = url;
+        this.likes = likes;
+        this.dislikes = dislikes;
+    }
+
+    public Photo() {
+    }
 
 
     @Id

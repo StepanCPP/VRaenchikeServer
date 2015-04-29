@@ -2,6 +2,7 @@ package com.vraenchike.Controller;
 
 import com.vraenchike.Model.*;
 import com.vraenchike.Services.DAO.DAOFactory;
+import com.vraenchike.Services.EntityServises.UserService;
 import org.json.JSONException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -93,9 +94,10 @@ public class MainController {
     }
 
     public static void main(String[] args) throws SQLException {
-        Photo p = null;
-        p = DAOFactory.getInstance().getPhotoDAO().getByURL("1");
-        System.out.println(p.getUrl());
+        UserService us = new UserService();
+        //Photo p = new Photo("betka.com",0,1);
+     //   DAOFactory.getInstance().getPhotoDAO().addPhoto(p);
+        us.AddFavoritePhoto(3,"betka.com");
 
 
         // Collection allUsers = DAOFactory.getInstance().getUserDAO().getAllUsers();

@@ -6,7 +6,6 @@ import org.json.JSONObject;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -49,11 +48,11 @@ public class User implements Serializable,JSONable {
     @Id
     @Column (name = "idUser")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    public int getIdUser() {
+    public long getIdUser() {
         return idUser;
     }
 
-    public void setIdUser(int idUser) {
+    public void setIdUser(long idUser) {
         this.idUser = idUser;
     }
     //many ot many relationship
@@ -87,7 +86,7 @@ public class User implements Serializable,JSONable {
 
     private UserLoginInfo userLoginInfo;
     private String user_name = "";
-    private int idUser;
+    private long idUser;
     private Date lastPhotoView = new Date();
     //mapping privates
     private Set<Place> places = new HashSet<>();
