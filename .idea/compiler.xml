@@ -26,5 +26,8 @@
         <module name="VRaenchike" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="VRaenchike" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
 </project>
