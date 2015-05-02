@@ -61,10 +61,6 @@ public class UserLoginInfo implements Serializable {
     }
 
 
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
 
 
     @Column (name = "pass")
@@ -76,11 +72,15 @@ public class UserLoginInfo implements Serializable {
         this.pass = pass;
     }
 
+       @Column(name = "login")
+    public void setLogin(String login) {
+        this.login = login;
+    }
 
 
-
-
-
+    public String getLogin() {
+        return login;
+    }
 
     private User user;
     private int idUser;

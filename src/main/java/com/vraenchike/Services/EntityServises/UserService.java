@@ -1,29 +1,67 @@
 package com.vraenchike.Services.EntityServises;
 
+import com.vraenchike.Exception.UserCredentialAlreadyExist;
 import com.vraenchike.Model.*;
 import com.vraenchike.Services.DAO.DAOFactory;
 import com.vraenchike.Util.HibernateUtil;
 import org.hibernate.Criteria;
 import org.hibernate.Hibernate;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import java.sql.SQLException;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * Created by Artyom on 29.04.2015.
  */
 public class UserService {
 
+    public User registerUser(String username,String login,String pass,Session session) throws UserCredentialAlreadyExist {
 
-    public static User getCurrentUser(Session session) throws SQLException {
-       session.beginTransaction();
-        Criteria criteria = session.createCriteria(User.class);
-        User u = (User)criteria.add(Restrictions.eq("login", SecurityContextHolder.getContext().getAuthentication().getName()))
-                .uniqueResult();
+        String hql = "from User where userLoginInfo.login = :login_name";
+        Query query = session.createQuery(hql);
+        query.setParameter("login_name",login);
+
+        if(query.list().size()>0){
+            throw new UserCredentialAlreadyExist("login `"+login+"` already exist!");
+        }
+
+        session.beginTransaction();
+        User u = new User();
+        u.setUser_name(username);
+        UserLoginInfo userLoginInfo = new UserLoginInfo();
+        userLoginInfo.setLogin(login);
+        userLoginInfo.setPass(pass);
+
+        userLoginInfo.setUser(u);
+        u.setUserLoginInfo(userLoginInfo);
+        session.save(u);
         session.getTransaction().commit();
+
+
+
+        return u;
+
+    }
+    public static User getCurrentUser(Session session) throws SQLException {
+        SecurityContextHolder.getContext().getAuthentication().getAuthorities();
+      String login = SecurityContextHolder.getContext().getAuthentication().getName();
+        String hql = "from User where userLoginInfo.login = :login_name";
+        Query query = session.createQuery(hql);
+        query.setParameter("login_name",login);
+
+
+        User u  = null;
+        List list = query.list();
+        if(list.size()>0){
+            u = (User) list.get(0);
+        }
+
+
         return u;
 
     }
