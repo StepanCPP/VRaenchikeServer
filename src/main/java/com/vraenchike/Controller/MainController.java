@@ -3,12 +3,7 @@ package com.vraenchike.Controller;
 import com.vraenchike.Model.*;
 import com.vraenchike.Services.DAO.DAOFactory;
 import com.vraenchike.Services.EntityServises.UserService;
-import com.vraenchike.Util.HibernateUtil;
-import org.hibernate.Criteria;
-import org.hibernate.Session;
-import org.hibernate.criterion.Restrictions;
 import org.json.JSONException;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -41,8 +36,6 @@ public class MainController {
     @RequestMapping(value = "/pagenumber/{pageno}", method = RequestMethod.GET)
     public String mainPage(ModelMap modelMap,@PathVariable(value = "pageno") String pageno)
     {
-
-
         modelMap.addAttribute("text",pageno);
 
 
@@ -100,31 +93,30 @@ public class MainController {
         return "saved!";
     }
 
-    public static void main(String[] args) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        User u  =  (User)session.load(User.class, 3);
+    public static void main(String[] args) throws SQLException, JSONException {
 
+        User user = new User();
+        user.setUser_name("Stepan");
 
-        Photo p = new Photo();
-        p.setUrl("asdassd1");
-        session.save(p);
-       ApiError apiError = ApiError.NO_DB_CONNECTION;
-        System.out.println(apiError.getCode());
-        apiError.getCode();
+        System.out.println(user.toJSONObject().toString());
 
-        UserPhoto userPhoto = new UserPhoto();
-        userPhoto.setPhoto(p);
-        userPhoto.setUser(u);
-        userPhoto.setType("Abra");
+        Place place = new Place();
+        place.setLat(132);
+        place.setLng(160);
+        place.setName("Gornitsa");
+        place.setRadius(200);
 
-        u.getUserPhoto().add(userPhoto);
-        session.save(u);
+        System.out.println(place.toJSONObject().toString());
 
-        session.getTransaction().commit();
+        Photo photo = new Photo();
+        photo.setDislikes(0);
+        photo.setDislikes(0);
+        photo.setUrl("vk.com/photo1234123412");
 
+        System.out.println(photo.toJSONObject().toString());
+
+        }
 
     }
-}
 
 
