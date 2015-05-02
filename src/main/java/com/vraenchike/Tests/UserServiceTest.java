@@ -10,10 +10,7 @@ import org.junit.Test;
 
 
 import java.sql.SQLException;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Random;
-import java.util.TreeSet;
+import java.util.*;
 
 /**
  * Created by Alexeev on 02-May-15.
@@ -49,7 +46,7 @@ public class UserServiceTest extends Assert {
         Random r = new Random();
         String letters = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890";
 
-        for(int i=0;i<10;i++)
+        for(int i=0;i<15;i++)
         {
             s+=letters.charAt(r.nextInt(letters.length()));
         }
@@ -113,22 +110,78 @@ public class UserServiceTest extends Assert {
         }
         s.close();
 
-    }
-    /*
-    @Test
-    public void testRemoveFavoritePhoto()
-    {
-        Session s = HibernateUtil.getSessionFactory().openSession();
+
+
+
         int toRemoveCount = new Random().nextInt(this.photos.size()-5)+5;
         TreeSet<Photo> removedPhoto = new TreeSet<>();
 
         int counter = 0;
         Iterator<Photo> userPhotoIterator = this.photos.iterator();
         while (userPhotoIterator.hasNext() && counter++<toRemoveCount){
-
+            try {
+                Photo next = userPhotoIterator.next();
+                service.RemoveFavoritePhoto(next.getUrl());
+                removedPhoto.add(next);
+            } catch (SQLException e) {
+                fail(e.getMessage());
+            }
         }
+
+
+      s = HibernateUtil.getSessionFactory().openSession();
+       query = s.createQuery("from User where userLoginInfo.login = :login_inf");
+        query.setParameter("login_inf",login);
+        suser = (User) query.uniqueResult();
+        assertNotNull(suser);
+
+
+
+
+
+        Set<UserPhoto> userPhoto = suser.getUserPhoto();
+        Iterator<UserPhoto> it1= userPhoto.iterator();
+        while (it1.hasNext()){
+            assertFalse(removedPhoto.contains(it1.next().getPhoto()));
+        }
+
+
+        s.close();
+    }
+
+    /*
+    @Test
+    public void testRemoveFavoritePhoto()
+    {
+        int toRemoveCount = new Random().nextInt(this.photos.size()-5)+5;
+        TreeSet<Photo> removedPhoto = new TreeSet<>();
+
+        int counter = 0;
+        Iterator<Photo> userPhotoIterator = this.photos.iterator();
+        while (userPhotoIterator.hasNext() && counter++<toRemoveCount){
+            try {
+                Photo next = userPhotoIterator.next();
+                service.RemoveFavoritePhoto(next.getUrl());
+                removedPhoto.add(next);
+            } catch (SQLException e) {
+                fail(e.getMessage());
+            }
+        }
+
+
+        Session s = HibernateUtil.getSessionFactory().openSession();
+        org.hibernate.Query query = s.createQuery("from User where userLoginInfo.login = :login_inf");
+        query.setParameter("login_inf",login);
+        User suser = (User) query.uniqueResult();
+        assertNotNull(suser);
+
+        Iterator<Photo> it = removedPhoto.iterator();
+        while (it.hasNext()){
+            assertFalse(photos.contains(it.next()));
+        }
+
 
         s.close();
     }*/
-    
+
 }

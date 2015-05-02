@@ -118,15 +118,20 @@ public class UserService {
 
 
         session.beginTransaction();
-        Photo p = DAOFactory.getInstance().getPhotoDAO().getByURL(url,session);
+
 
         Iterator<UserPhoto> it = user.getUserPhoto().iterator();
         while(it.hasNext()){
             UserPhoto us = it.next();
-            if(us.getPhoto().equals(p)){
+            if(us.getPhoto().getUrl().equals(url)){
                 it.remove();
+                us.setUser(null);
+                us.setPhoto(null);
+                //TODO NOT DELETE
+                //session.delete(us);
             }
         }
+        user.getUserPhoto().clear();
 
 
 
