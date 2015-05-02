@@ -19,7 +19,7 @@ import java.util.List;
  * Created by Artyom on 29.04.2015.
  */
 public class UserService {
-
+    public  static String lastRegisterUserLogin = null;
     public User registerUser(String username,String login,String pass,Session session) throws UserCredentialAlreadyExist {
 
         String hql = "from User where userLoginInfo.login = :login_name";
@@ -41,16 +41,21 @@ public class UserService {
         u.setUserLoginInfo(userLoginInfo);
         session.save(u);
         session.getTransaction().commit();
-
+        lastRegisterUserLogin  = u.getUserLoginInfo().getLogin();
 
 
         return u;
 
     }
     public static User getCurrentUser(Session session) throws SQLException {
-        SecurityContextHolder.getContext().getAuthentication().getAuthorities();
-      String login = SecurityContextHolder.getContext().getAuthentication().getName();
-        String hql = "from User where userLoginInfo.login = :login_name";
+        //ONLY FOR TEST
+
+        //        String login = SecurityContextHolder.getContext().getAuthentication().getName();
+
+        String login = lastRegisterUserLogin;
+
+//        SecurityContextHolder.getContext().getAuthentication().getAuthorities();
+       String hql = "from User where userLoginInfo.login = :login_name";
         Query query = session.createQuery(hql);
         query.setParameter("login_name",login);
 

@@ -16,7 +16,7 @@ import java.util.TreeSet;
 
 @Entity
 @Table(name = "photo")
-public class Photo  {
+public class Photo implements Comparable<Photo> {
     private int id;
     private String url = " ";
     private int likes=0;
@@ -75,7 +75,7 @@ public class Photo  {
     /////many to many retaionship
 
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "pk.p")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "pk.p",cascade = CascadeType.ALL)
     public Set <UserPhoto> getUserPhoto() {
         return usersPhoto;
     }
@@ -116,5 +116,10 @@ public class Photo  {
         result = 31 * result + dislikes;
         result = 31 * result + (usersPhoto != null ? usersPhoto.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public int compareTo(Photo o) {
+        return this.url.compareTo(o.getUrl());
     }
 }
