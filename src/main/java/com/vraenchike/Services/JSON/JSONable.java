@@ -8,5 +8,5 @@ import org.json.JSONObject;
  */
 public interface JSONable {
 
-    JSONObject toJSONObject() throws JSONException;
+   JSONObject toJSONObject() throws JSONException;
 }
