@@ -1,4 +1,4 @@
-package com.vraenchike.Model;
+package com.vraenchike.Services.ApiUtil;
 
 /**
  * Created by Artyom on 02.05.2015.
