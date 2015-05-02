@@ -1,6 +1,7 @@
 package com.vraenchike.Model;
 
 import javax.persistence.*;
+import java.util.Date;
 
 /**
  * Created by Artyom on 15.04.2015.
@@ -56,9 +57,20 @@ public class UserPhoto implements Comparable<UserPhoto> {
 
     private UserPhotoId pk = new UserPhotoId();
     private String type = "hi bro";
+    private Date addedDate = new Date();
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "added_date")
+    public Date getAddedDate() {
+        return addedDate;
+    }
+
+    public void setAddedDate(Date addedDate) {
+        this.addedDate = addedDate;
+    }
 
     @Override
     public int compareTo(UserPhoto o) {
-        return type.compareTo(o.getType());
+        return this.addedDate.compareTo(o.getAddedDate());
     }
 }
