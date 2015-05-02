@@ -6,36 +6,26 @@ import javax.persistence.*;
  * Created by Artyom on 15.04.2015.
  */
 @Entity
-public class UserPhoto {
+@Table(name = "userphoto")
+@AssociationOverrides({
+        @AssociationOverride(name = "pk.u",
+                joinColumns = @JoinColumn(name = "idUser")),
+        @AssociationOverride(name = "pk.p",
+                joinColumns = @JoinColumn(name = "idPhoto")) })
+public class UserPhoto implements Comparable<UserPhoto> {
 
-    @Id
-    @Column (name = "idUserPhoto")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    public int getIdUserPhoto() {
-        return idUserPhoto;
-    }
 
-    public void setIdUserPhoto(int idUserPhoto) {
-        this.idUserPhoto = idUserPhoto;
-    }
-    @Column (name = "idUser")
-    public int getIdUser() {
-        return idUser;
-    }
 
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
-    }
-    @Column (name = "idPhoto")
-    public int getIdPhoto() {
-        return idPhoto;
+
+    @EmbeddedId
+    public UserPhotoId getPk() {
+        return pk;
     }
 
-    public void setIdPhoto(int idPhoto) {
-        this.idPhoto = idPhoto;
+    public void setPk(UserPhotoId pk) {
+        this.pk = pk;
     }
-
-    @Column (name = "type", nullable = false, columnDefinition = "undefined")
+    @Column (name = "type")
     public String getType() {
         return type;
     }
@@ -44,9 +34,31 @@ public class UserPhoto {
         this.type = type;
     }
 
-    private int idUserPhoto;
-    private int idUser;
-    private int idPhoto;
+    @Transient
+    public User getUser() {
+        return getPk().getU();
+    }
 
-    private String type = "hi bro"; //TODO to solvse this field 
+    public void setUser(User user) {
+        getPk().setU(user);
+    }
+
+    @Transient
+    public Photo getPhoto() {
+        return getPk().getP();
+    }
+
+    public void setPhoto(Photo photo) {
+        getPk().setP(photo);
+    }
+
+
+
+    private UserPhotoId pk = new UserPhotoId();
+    private String type = "hi bro";
+
+    @Override
+    public int compareTo(UserPhoto o) {
+        return type.compareTo(o.getType());
+    }
 }

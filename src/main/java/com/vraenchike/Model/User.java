@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * Created by Artyom on 15.04.2015.
@@ -23,7 +24,7 @@ public class User implements Serializable,JSONable {
         return lastPhotoView;
     }
 
-    @OneToOne(mappedBy = "user",cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.LAZY,mappedBy = "user",cascade = CascadeType.ALL)
     public UserLoginInfo getUserLoginInfo() {
         return userLoginInfo;
     }
@@ -48,28 +49,25 @@ public class User implements Serializable,JSONable {
     @Id
     @Column (name = "idUser")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    public long getIdUser() {
+    public int getIdUser() {
         return idUser;
     }
 
-    public void setIdUser(long idUser) {
+    public void setIdUser(int idUser) {
         this.idUser = idUser;
     }
     //many ot many relationship
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "userphoto", joinColumns = {
-            @JoinColumn(name = "idUser", nullable = false, updatable = false) },
-            inverseJoinColumns = { @JoinColumn(name = "idPhoto",
-                    nullable = false, updatable = false) })
-    public Set<Photo> getPhotos() {
-        return photos;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "pk.u",cascade = CascadeType.ALL)
+    public Set <UserPhoto> getUserPhoto() {
+        return usersPhoto;
     }
 
-    public void setPhotos(Set<Photo> photos) {
-        this.photos = photos;
-    }
 
+
+    public void setUserPhoto(Set <UserPhoto> users) {
+        this.usersPhoto = users;
+    }
 
     public void setBanned(Set<Banned> banned) {
         this.banned = banned;
@@ -94,13 +92,13 @@ public class User implements Serializable,JSONable {
         return this.user_name;
     }
 
-    private UserLoginInfo userLoginInfo;
+    private UserLoginInfo userLoginInfo = new UserLoginInfo();
     private String user_name = "";
-    private long idUser;
+    private int idUser;
     private Date lastPhotoView = new Date();
     //mapping privates
     private Set<Place> places = new HashSet<>();
-    private Set<Photo> photos = new HashSet<>();
+    private Set <UserPhoto> usersPhoto = new TreeSet<>();
     private Set<Banned> banned = new HashSet<>();
 
 
@@ -113,10 +111,11 @@ public class User implements Serializable,JSONable {
         return jo;
 
     }
-@OneToMany (fetch = FetchType.LAZY, mappedBy = "user")
-    public Set<Banned> getBanned() {
-        return banned;
-    }
+    @OneToMany (fetch = FetchType.LAZY, mappedBy = "user",
+            cascade = CascadeType.ALL)
+        public Set<Banned> getBanned() {
+            return banned;
+        }
 
 
 }

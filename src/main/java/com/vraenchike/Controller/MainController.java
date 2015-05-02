@@ -3,6 +3,10 @@ package com.vraenchike.Controller;
 import com.vraenchike.Model.*;
 import com.vraenchike.Services.DAO.DAOFactory;
 import com.vraenchike.Services.EntityServises.UserService;
+import com.vraenchike.Util.HibernateUtil;
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 import org.json.JSONException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -96,20 +100,32 @@ public class MainController {
         return "saved!";
     }
 
-    public static void main(String[] args) throws SQLException {
-        UserService us = new UserService();
-        //Photo p = new Photo("betka.com",0,1);
-     //   DAOFactory.getInstance().getPhotoDAO().addPhoto(p);
-       // us.AddFavoritePhoto(3,"betka.com12");
-        us.RemoveFavoritePhoto(3,"betka.com1");
-
-        // Collection allUsers = DAOFactory.getInstance().getUserDAO().getAllUsers();
-      //  for(Object usr : allUsers){
-        //    System.out.println(((User)usr));
+    public static void main(String[] args) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        User u  =  (User)session.load(User.class, 3);
 
 
+        Photo p = new Photo();
+        p.setUrl("asdassd1");
+        session.save(p);
 
-        }
+
+        UserPhoto userPhoto = new UserPhoto();
+        userPhoto.setPhoto(p);
+        userPhoto.setUser(u);
+        userPhoto.setType("Abra");
+
+        u.getUserPhoto().add(userPhoto);
+        session.save(u);
+
+        session.getTransaction().commit();
+
+
+    }
+
+
+
 
     }
 

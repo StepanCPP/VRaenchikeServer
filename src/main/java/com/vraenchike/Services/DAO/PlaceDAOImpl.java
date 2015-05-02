@@ -16,14 +16,12 @@ public class PlaceDAOImpl implements  PlaceDAO {
 
 
     @Override
-    public void addPlace(Place place) throws SQLException {
-        Session session = null;
-        session = HibernateUtil.getSessionFactory().openSession();
+    public void addPlace(Place place,Session session) throws SQLException {
+
         session.beginTransaction();
         session.save(place);
         session.getTransaction().commit();
-        if (session != null && session.isOpen())
-        session.close();
+
     }
 
     @Override
@@ -38,14 +36,13 @@ public class PlaceDAOImpl implements  PlaceDAO {
     }
 
     @Override
-    public Place getPlaceById(Long Place_id) throws SQLException {
-        Session session = null;
-        Place place = null;
-        session = HibernateUtil.getSessionFactory().openSession();
-        place = (Place)session.load(Place.class, Place_id);
-        if (session != null && session.isOpen())
-            session.close();
-        return place;
+    public Place getPlaceById(Long Place_id,Session session) throws SQLException {
+
+
+
+
+
+        return (Place)session.load(Place.class, Place_id);
     }
 
     @Override
