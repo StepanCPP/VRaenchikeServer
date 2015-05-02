@@ -71,15 +71,22 @@ public class PhotoDAOImpl implements PhotoDAO {
 
     }
 
-    public Photo getByURL(String url){
-        Session session = null;
+    public Photo getByURL(String url,Session session){
+        //Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         Photo p = null;
-        session = HibernateUtil.getSessionFactory().getCurrentSession();
+        //if(!session.isOpen())
+        //    session = HibernateUtil.getSessionFactory().openSession();
+       // session.getSessionFactory().getCurrentSession().beginTransaction();
+
+
+
         Criteria criteria = session.createCriteria(Photo.class);
         p = (Photo)criteria.add(Restrictions.eq("url", url))
                 .uniqueResult();
-       // session.close();
+    //        HibernateUtil.getSessionFactory().getCurrentSession().getTransaction().commit();
 
+      //  if (session != null && session.isOpen())
+       //    session.close();
         return p;
 
     }

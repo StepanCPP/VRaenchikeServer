@@ -2,6 +2,8 @@ package com.vraenchike.Services.EntityServises;
 
 import com.vraenchike.Model.Photo;
 import com.vraenchike.Services.DAO.DAOFactory;
+import com.vraenchike.Util.HibernateUtil;
+import org.hibernate.Session;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -26,8 +28,9 @@ public class PhotoService {
     }
 
     public Photo LikePhoto(String url) throws SQLException {
+        Session session = HibernateUtil.getSessionFactory().openSession();
         Photo p = null;
-        p = DAOFactory.getInstance().getPhotoDAO().getByURL(url);
+        p = DAOFactory.getInstance().getPhotoDAO().getByURL(url,session);
         int currentLikes = p.getLikes();
         p.setLikes(currentLikes+1);
         DAOFactory.getInstance().getPhotoDAO().updatePhoto((long)p.getId(),p);
@@ -35,8 +38,9 @@ public class PhotoService {
 
     }
     public Photo DislikePhoto(String url) throws SQLException {
+        Session session = HibernateUtil.getSessionFactory().openSession();
         Photo p = null;
-        p = DAOFactory.getInstance().getPhotoDAO().getByURL(url);
+        p = DAOFactory.getInstance().getPhotoDAO().getByURL(url,session);
         int currentDislikes = p.getDislikes();
         p.setLikes(currentDislikes + 1);
         DAOFactory.getInstance().getPhotoDAO().updatePhoto((long)p.getId(),p);

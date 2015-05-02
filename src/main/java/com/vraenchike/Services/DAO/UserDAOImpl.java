@@ -1,5 +1,6 @@
 package com.vraenchike.Services.DAO;
 
+import com.vraenchike.Model.Photo;
 import com.vraenchike.Model.User;
 import com.vraenchike.Util.HibernateUtil;
 import org.hibernate.Session;
@@ -25,24 +26,36 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public void updateUser(Long user_id, User user) throws SQLException {
-        Session session = null;
-        session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
+    public void updateUser(Long user_id, User user,Session session) throws SQLException {
+        //Session session = null;
+        //session = HibernateUtil.getSessionFactory().openSession();
+        //session.beginTransaction();
         session.update(user);
-        session.getTransaction().commit();
+        //session.getTransaction().commit();
         if (session != null && session.isOpen())
             session.close();
     }
 
     @Override
-    public User getUserById(Long user_id) throws SQLException {
-        Session session = null;
+    public User getUserById(Long user_id,Session session) throws SQLException {
+        //Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         User user = null;
-        session = HibernateUtil.getSessionFactory().openSession();
+       // session = HibernateUtil.getSessionFactory().openSession();
+
+        if(!session.isOpen())
+            session = HibernateUtil.getSessionFactory().openSession();
+
+
+     /*   if(!HibernateUtil.getSessionFactory().getCurrentSession().getTransaction().isActive()){
+                 }*/
+
+
+
         user = (User)session.load(User.class, user_id);
-        if (session != null && session.isOpen())
-            session.close();
+       // session.getTransaction().commit();
+
+       // if (session != null && session.isOpen())
+         //   session.close();
         return user;
     }
 

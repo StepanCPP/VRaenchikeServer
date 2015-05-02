@@ -4,6 +4,7 @@ import com.vraenchike.Model.*;
 import com.vraenchike.Services.DAO.DAOFactory;
 import com.vraenchike.Services.EntityServises.UserService;
 import org.json.JSONException;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -36,6 +37,8 @@ public class MainController {
     @RequestMapping(value = "/pagenumber/{pageno}", method = RequestMethod.GET)
     public String mainPage(ModelMap modelMap,@PathVariable(value = "pageno") String pageno)
     {
+
+
         modelMap.addAttribute("text",pageno);
 
 
@@ -97,8 +100,8 @@ public class MainController {
         UserService us = new UserService();
         //Photo p = new Photo("betka.com",0,1);
      //   DAOFactory.getInstance().getPhotoDAO().addPhoto(p);
-        us.AddFavoritePhoto(3,"betka.com");
-
+       // us.AddFavoritePhoto(3,"betka.com12");
+        us.RemoveFavoritePhoto(3,"betka.com1");
 
         // Collection allUsers = DAOFactory.getInstance().getUserDAO().getAllUsers();
       //  for(Object usr : allUsers){

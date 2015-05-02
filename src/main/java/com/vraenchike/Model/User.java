@@ -57,8 +57,12 @@ public class User implements Serializable,JSONable {
     }
     //many ot many relationship
 
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "users")
-        public Set<Photo> getPhotos() {
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "userphoto", joinColumns = {
+            @JoinColumn(name = "idUser", nullable = false, updatable = false) },
+            inverseJoinColumns = { @JoinColumn(name = "idPhoto",
+                    nullable = false, updatable = false) })
+    public Set<Photo> getPhotos() {
         return photos;
     }
 
@@ -70,7 +74,13 @@ public class User implements Serializable,JSONable {
     public void setBanned(Set<Banned> banned) {
         this.banned = banned;
     }
-    @ManyToMany(fetch =  FetchType.LAZY, mappedBy = "users")
+
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "userplaces",  joinColumns = {
+            @JoinColumn(name = "idUser", nullable = false, updatable = false) },
+            inverseJoinColumns = { @JoinColumn(name = "idPlace",
+                    nullable = false, updatable = false) })
     public Set<Place> getPlaces() {
         return places;
     }
