@@ -109,7 +109,9 @@ public class MainController {
         Photo p = new Photo();
         p.setUrl("asdassd1");
         session.save(p);
-
+       ApiError apiError = ApiError.NO_DB_CONNECTION;
+        System.out.println(apiError.getCode());
+        apiError.getCode();
 
         UserPhoto userPhoto = new UserPhoto();
         userPhoto.setPhoto(p);
