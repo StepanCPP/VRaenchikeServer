@@ -93,7 +93,7 @@ public class UserService {
 
         UserPhoto userPhoto = new UserPhoto();
         userPhoto.setPhoto(p);
-        userPhoto.setType("like");
+        userPhoto.setType("f");
         userPhoto.setUser(user);
         user.getUserPhoto().add(userPhoto);
        // p.getUsers().add(user);
@@ -124,18 +124,16 @@ public class UserService {
         while(it.hasNext()){
             UserPhoto us = it.next();
             if(us.getPhoto().getUrl().equals(url)){
-                it.remove();
-                us.setUser(null);
-                us.setPhoto(null);
-                //TODO NOT DELETE
-                //session.delete(us);
+                //it.remove();
+                us.setDeleted(1);
+                session.save(us);
             }
         }
-        user.getUserPhoto().clear();
+       // user.getUserPhoto().clear();
 
 
 
-        session.save(user);
+        //session.save(user);
         session.getTransaction().commit();
         //DAOFactory.getInstance().getUserDAO().updateUser(uid,user,session);
 

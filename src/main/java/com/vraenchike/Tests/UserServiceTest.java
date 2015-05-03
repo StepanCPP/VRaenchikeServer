@@ -63,7 +63,7 @@ public class UserServiceTest extends Assert {
 
 
     @Test
-    public void testAddFavoritePhoto()
+    public void testAddRemoveFavoritePhoto()
     {
 
         Session s = HibernateUtil.getSessionFactory().openSession();
@@ -139,49 +139,16 @@ public class UserServiceTest extends Assert {
 
 
 
-        Set<UserPhoto> userPhoto = suser.getUserPhoto();
-        Iterator<UserPhoto> it1= userPhoto.iterator();
+        TreeSet<Photo> userFavoritePhoto = suser.getFavoritePhoto();
+        Iterator<Photo> it1 = userFavoritePhoto.iterator();
         while (it1.hasNext()){
-            assertFalse(removedPhoto.contains(it1.next().getPhoto()));
+            assertFalse(removedPhoto.contains(it1.next()));
         }
 
 
         s.close();
     }
 
-    /*
-    @Test
-    public void testRemoveFavoritePhoto()
-    {
-        int toRemoveCount = new Random().nextInt(this.photos.size()-5)+5;
-        TreeSet<Photo> removedPhoto = new TreeSet<>();
 
-        int counter = 0;
-        Iterator<Photo> userPhotoIterator = this.photos.iterator();
-        while (userPhotoIterator.hasNext() && counter++<toRemoveCount){
-            try {
-                Photo next = userPhotoIterator.next();
-                service.RemoveFavoritePhoto(next.getUrl());
-                removedPhoto.add(next);
-            } catch (SQLException e) {
-                fail(e.getMessage());
-            }
-        }
-
-
-        Session s = HibernateUtil.getSessionFactory().openSession();
-        org.hibernate.Query query = s.createQuery("from User where userLoginInfo.login = :login_inf");
-        query.setParameter("login_inf",login);
-        User suser = (User) query.uniqueResult();
-        assertNotNull(suser);
-
-        Iterator<Photo> it = removedPhoto.iterator();
-        while (it.hasNext()){
-            assertFalse(photos.contains(it.next()));
-        }
-
-
-        s.close();
-    }*/
 
 }
