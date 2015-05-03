@@ -14,6 +14,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Created by Artyom on 29.04.2015.
@@ -72,6 +73,20 @@ public class UserService {
     }
 
     public void AddFavoritePhoto( String url) throws SQLException {
+       AddPhoto(url,"f");
+    }
+    public void RemoveFavoritePhoto( String url) throws SQLException {
+       RemovePhoto(url,"f");
+    }
+
+    public void AddLikePhoto(String url) throws SQLException {
+        AddPhoto(url,"l");
+    }
+    public void RemoveLikePhoto( String url) throws SQLException {
+        RemovePhoto(url,"l");
+    }
+
+    private void AddPhoto(String url,String type) throws SQLException {
         Session session = HibernateUtil.getSessionFactory().openSession();
 
         User user = getCurrentUser(session);
@@ -93,10 +108,10 @@ public class UserService {
 
         UserPhoto userPhoto = new UserPhoto();
         userPhoto.setPhoto(p);
-        userPhoto.setType("f");
+        userPhoto.setType(type);
         userPhoto.setUser(user);
         user.getUserPhoto().add(userPhoto);
-       // p.getUsers().add(user);
+        // p.getUsers().add(user);
 
         session.save(user);
         session.save(p);
@@ -107,7 +122,7 @@ public class UserService {
 
 
     }
-    public void RemoveFavoritePhoto( String url) throws SQLException {
+    private void RemovePhoto(String url,String type) throws SQLException {
         Session session = HibernateUtil.getSessionFactory().openSession();
         User user = getCurrentUser(session);
         if(user==null){
@@ -123,13 +138,13 @@ public class UserService {
         Iterator<UserPhoto> it = user.getUserPhoto().iterator();
         while(it.hasNext()){
             UserPhoto us = it.next();
-            if(us.getPhoto().getUrl().equals(url)){
+            if(us.getPhoto().getUrl().equals(url) && Objects.equals(us.getType(), "f")){
                 //it.remove();
                 us.setDeleted(1);
                 session.save(us);
             }
         }
-       // user.getUserPhoto().clear();
+        // user.getUserPhoto().clear();
 
 
 
@@ -139,8 +154,12 @@ public class UserService {
 
         if (session != null && session.isOpen())
             session.close();
-
     }
+
+
+
+
+
     public void AddFavoritePlace( long place_id) throws SQLException {
         Session session =  HibernateUtil.getSessionFactory().openSession();
         User user = getCurrentUser(session);
