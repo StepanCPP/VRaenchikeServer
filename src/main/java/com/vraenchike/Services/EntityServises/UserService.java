@@ -12,9 +12,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import java.sql.SQLException;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * Created by Artyom on 29.04.2015.
@@ -202,24 +200,30 @@ public class UserService {
 
 
     }
-    public void Ban(String linkVK,String linkInsta) throws SQLException {
+    public Banned Ban(String linkVK,String linkInsta) throws SQLException {
         Session session = HibernateUtil.getSessionFactory().openSession();
+       session.beginTransaction();
         User user = getCurrentUser(session);
         if(user==null){
             if (session != null && session.isOpen())
                 session.close();
-            return;
+            return null;
         }
         Banned banned = new Banned();
         banned.setLinkInsta(linkInsta);
         banned.setLinkVk(linkVK);
+        banned.setUser(user);
         user.getBanned().add(banned);
         session.save(banned);
         session.save(user);
+        session.getTransaction().commit();
+        session.close();
+        return banned;
 
     }
     public void DisBan(int idBanned) throws SQLException {
         Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
         User user = getCurrentUser(session);
         if(user==null){
             if (session != null && session.isOpen())
@@ -234,5 +238,21 @@ public class UserService {
             }
         }
         session.save(user);
+        session.getTransaction().commit();;
+        session.close();
     }
+    public Collection getAllBanned() throws SQLException {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        User user = UserService.getCurrentUser(session);
+        if(user==null){
+            if (session != null && session.isOpen())
+                session.close();
+            return new ArrayList<>();
+        }
+
+
+        session.close();
+        return user.getBanned();
+    }
+
 }
