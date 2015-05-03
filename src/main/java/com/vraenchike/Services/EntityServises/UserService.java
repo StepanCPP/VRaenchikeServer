@@ -1,6 +1,7 @@
 package com.vraenchike.Services.EntityServises;
 
 import com.vraenchike.Exception.UserCredentialAlreadyExist;
+import com.vraenchike.Exception.UserNotAuth;
 import com.vraenchike.Model.*;
 import com.vraenchike.Services.DAO.DAOFactory;
 import com.vraenchike.Util.HibernateUtil;
@@ -70,28 +71,28 @@ public class UserService {
 
     }
 
-    public void AddFavoritePhoto( String url) throws SQLException {
-       AddPhoto(url,"f");
+    public Photo AddFavoritePhoto( String url) throws SQLException, UserNotAuth {
+       return AddPhoto(url,"f");
     }
     public void RemoveFavoritePhoto( String url) throws SQLException {
        RemovePhoto(url,"f");
     }
 
-    public void AddLikePhoto(String url) throws SQLException {
+    public void AddLikePhoto(String url) throws SQLException, UserNotAuth {
         AddPhoto(url,"l");
     }
     public void RemoveLikePhoto( String url) throws SQLException {
         RemovePhoto(url,"l");
     }
 
-    private void AddPhoto(String url,String type) throws SQLException {
+    private Photo AddPhoto(String url,String type) throws SQLException, UserNotAuth {
         Session session = HibernateUtil.getSessionFactory().openSession();
 
         User user = getCurrentUser(session);
         if(user==null){
             if (session != null && session.isOpen())
                 session.close();
-            return;
+            throw new UserNotAuth();
         }
 
         session.beginTransaction();
@@ -117,7 +118,7 @@ public class UserService {
         if (session != null && session.isOpen())
             session.close();
 
-
+        return p;
 
     }
     private void RemovePhoto(String url,String type) throws SQLException {
