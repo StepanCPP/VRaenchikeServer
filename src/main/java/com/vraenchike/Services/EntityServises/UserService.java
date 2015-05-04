@@ -1,17 +1,14 @@
 package com.vraenchike.Services.EntityServises;
 
-import com.vraenchike.Exception.UserCredentialAlreadyExist;
-import com.vraenchike.Exception.UserNotAuth;
+import com.vraenchike.Exception.*;
 import com.vraenchike.Model.*;
 import com.vraenchike.Services.DAO.DAOFactory;
 import com.vraenchike.Util.HibernateUtil;
-import org.hibernate.Criteria;
-import org.hibernate.Hibernate;
-import org.hibernate.Query;
-import org.hibernate.Session;
+import org.hibernate.*;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.security.core.context.SecurityContextHolder;
 
+import java.math.BigInteger;
 import java.sql.SQLException;
 import java.util.*;
 
@@ -52,8 +49,8 @@ public class UserService {
 
         //        String login = SecurityContextHolder.getContext().getAuthentication().getName();
 
-        String login = lastRegisterUserLogin;
-
+       // String login = lastRegisterUserLogin;
+        String login =  SecurityContextHolder.getContext().getAuthentication().getName();
 //        SecurityContextHolder.getContext().getAuthentication().getAuthorities();
        String hql = "from User where userLoginInfo.login = :login_name";
         Query query = session.createQuery(hql);
@@ -74,14 +71,15 @@ public class UserService {
     public Photo AddFavoritePhoto( String url) throws SQLException, UserNotAuth {
        return AddPhoto(url,"f");
     }
-    public void RemoveFavoritePhoto( String url) throws SQLException {
-       RemovePhoto(url,"f");
+    public Photo RemoveFavoritePhoto(String url) throws SQLException, UserNotAuth, PhotoNotFoundException {
+       return RemovePhoto(url,"f");
+
     }
 
     public void AddLikePhoto(String url) throws SQLException, UserNotAuth {
         AddPhoto(url,"l");
     }
-    public void RemoveLikePhoto( String url) throws SQLException {
+    public void RemoveLikePhoto( String url) throws SQLException, UserNotAuth, PhotoNotFoundException {
         RemovePhoto(url,"l");
     }
 
@@ -121,19 +119,19 @@ public class UserService {
         return p;
 
     }
-    private void RemovePhoto(String url,String type) throws SQLException {
+    private Photo RemovePhoto(String url,String type) throws SQLException, PhotoNotFoundException, UserNotAuth {
         Session session = HibernateUtil.getSessionFactory().openSession();
         User user = getCurrentUser(session);
         if(user==null){
             if (session != null && session.isOpen())
                 session.close();
-            return;
+           throw new UserNotAuth();
         }
 
 
         session.beginTransaction();
 
-
+        Photo toReturn = null;
         Iterator<UserPhoto> it = user.getUserPhoto().iterator();
         while(it.hasNext()){
             UserPhoto us = it.next();
@@ -141,6 +139,7 @@ public class UserService {
                 //it.remove();
                 us.setDeleted(1);
                 session.save(us);
+                toReturn = us.getPhoto();
             }
         }
         // user.getUserPhoto().clear();
@@ -151,8 +150,13 @@ public class UserService {
         session.getTransaction().commit();
         //DAOFactory.getInstance().getUserDAO().updateUser(uid,user,session);
 
+
         if (session != null && session.isOpen())
             session.close();
+        if(toReturn!=null){
+            return toReturn;
+        }
+        throw new PhotoNotFoundException();
     }
 
 
@@ -201,18 +205,43 @@ public class UserService {
 
 
     }
-    public Banned Ban(String linkVK,String linkInsta) throws SQLException {
+    public Banned BanInstagram(String link) throws UserAlreadyBannedException, SQLException, UserNotAuth {
+        return Ban(link,"insta");
+    }
+
+    public Banned BanVk(String link) throws UserAlreadyBannedException, SQLException, UserNotAuth {
+        return Ban(link,"vk");
+    }
+
+    private Banned Ban(String link,String linkType) throws SQLException, UserNotAuth, UserAlreadyBannedException {
         Session session = HibernateUtil.getSessionFactory().openSession();
        session.beginTransaction();
         User user = getCurrentUser(session);
         if(user==null){
             if (session != null && session.isOpen())
                 session.close();
-            return null;
+            throw new UserNotAuth();
         }
+
+        //Query query = session.createQuery("from Banned where linkInsta=:insta and linkVk=:vk and user.id=:user_id");
+
+        SQLQuery query = session.createSQLQuery("select COUNT(*) as count from banned where link=:link1 AND linkType=:type and idUser=:idUser");
+
+        query.setParameter("link1",link);
+        query.setParameter("type",linkType);
+        query.setParameter("idUser",user.getIdUser());
+        Object o = query.uniqueResult();
+
+
+
+        if(!query.uniqueResult().equals(new BigInteger("0"))){
+            throw new UserAlreadyBannedException();
+        }
+
+
         Banned banned = new Banned();
-        banned.setLinkInsta(linkInsta);
-        banned.setLinkVk(linkVK);
+        banned.setLink(link);
+        banned.setLinkType(linkType);
         banned.setUser(user);
         user.getBanned().add(banned);
         session.save(banned);
@@ -222,38 +251,48 @@ public class UserService {
         return banned;
 
     }
-    public void DisBan(int idBanned) throws SQLException {
+    public Banned DisBan(int idBanned) throws SQLException, UserNotAuth, BannedNotFoundException {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         User user = getCurrentUser(session);
         if(user==null){
             if (session != null && session.isOpen())
                 session.close();
-            return;
+            throw new UserNotAuth();
         }
+        Banned toReturn = null;
         Iterator<Banned> iterator = user.getBanned().iterator();
         while (iterator.hasNext()) {
             Banned element = iterator.next();
             if (element.getIdBanned() == idBanned) {
                 iterator.remove();
+                toReturn = element;
             }
         }
         session.save(user);
-        session.getTransaction().commit();;
+        session.getTransaction().commit();
         session.close();
+
+        if(toReturn==null){
+            throw new BannedNotFoundException();
+        }
+        return toReturn;
     }
-    public Collection getAllBanned() throws SQLException {
+    public Collection getAllBanned() throws SQLException, UserNotAuth {
         Session session = HibernateUtil.getSessionFactory().openSession();
         User user = UserService.getCurrentUser(session);
         if(user==null){
             if (session != null && session.isOpen())
                 session.close();
-            return new ArrayList<>();
+            throw new UserNotAuth();
         }
+        //OPTIMIZE
+        Query query = session.createQuery("from Banned where idUser=:idUser");
 
-
+        query.setParameter("idUser", user.getIdUser());
+        List list = query.list();
         session.close();
-        return user.getBanned();
+        return list;
     }
 
 }

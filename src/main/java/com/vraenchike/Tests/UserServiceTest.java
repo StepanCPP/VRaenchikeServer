@@ -1,6 +1,8 @@
 package com.vraenchike.Tests;
 
+import com.vraenchike.Exception.PhotoNotFoundException;
 import com.vraenchike.Exception.UserCredentialAlreadyExist;
+import com.vraenchike.Exception.UserNotAuth;
 import com.vraenchike.Model.*;
 import com.vraenchike.Services.EntityServises.UserService;
 import com.vraenchike.Util.HibernateUtil;
@@ -91,6 +93,8 @@ public class UserServiceTest extends Assert {
 
             } catch (SQLException e) {
                 fail(e.getMessage());
+            } catch (UserNotAuth userNotAuth) {
+                userNotAuth.printStackTrace();
             }
         }
 
@@ -125,6 +129,10 @@ public class UserServiceTest extends Assert {
                 removedPhoto.add(next);
             } catch (SQLException e) {
                 fail(e.getMessage());
+            } catch (UserNotAuth userNotAuth) {
+                userNotAuth.printStackTrace();
+            } catch (PhotoNotFoundException e) {
+                e.printStackTrace();
             }
         }
 
@@ -139,7 +147,7 @@ public class UserServiceTest extends Assert {
 
 
 
-        TreeSet<Photo> userFavoritePhoto = suser.getFavoritePhoto(150);
+        TreeSet<Photo> userFavoritePhoto = suser.getFavoritePhoto(0,150);
         Iterator<Photo> it1 = userFavoritePhoto.iterator();
         while (it1.hasNext()){
             assertFalse(removedPhoto.contains(it1.next()));
