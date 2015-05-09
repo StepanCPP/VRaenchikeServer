@@ -3,12 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="4d616cf9-aa0d-4dc7-b4b1-b6c1e8997386" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/vraenchike/Controller/BannedController.java" afterPath="$PROJECT_DIR$/src/main/java/com/vraenchike/Controller/BannedController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/vraenchike/Model/Photo.java" afterPath="$PROJECT_DIR$/src/main/java/com/vraenchike/Model/Photo.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/vraenchike/Controller/PhotoController.java" afterPath="$PROJECT_DIR$/src/main/java/com/vraenchike/Controller/PhotoController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/vraenchike/Services/PhotoDaoImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/vraenchike/Services/PhotoDaoImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/vraenchike/Services/EntityServises/PhotoService.java" afterPath="$PROJECT_DIR$/src/main/java/com/vraenchike/Services/EntityServises/PhotoService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/vraenchike/Services/EntityServises/PlaceService.java" afterPath="$PROJECT_DIR$/src/main/java/com/vraenchike/Services/EntityServises/PlaceService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/vraenchike/Services/TestModelDAOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/vraenchike/Services/TestModelDAOImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/vraenchike/Model/User.java" afterPath="$PROJECT_DIR$/src/main/java/com/vraenchike/Model/User.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/vraenchike/Tests/UserPhotoTEst.java" afterPath="$PROJECT_DIR$/src/main/java/com/vraenchike/Tests/UserPhotoTEst.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/vraenchike/Services/EntityServises/UserService.java" afterPath="$PROJECT_DIR$/src/main/java/com/vraenchike/Services/EntityServises/UserService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/vraenchike/Tests/UserServiceTest.java" afterPath="$PROJECT_DIR$/src/main/java/com/vraenchike/Tests/UserServiceTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="VRaenchike.iws" />
@@ -83,18 +88,18 @@
       <file leaf-file-name="PhotoController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Controller/PhotoController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="802" max-vertical-offset="4092">
-              <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1528" max-vertical-offset="4224">
+              <caret line="102" column="0" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PhotoService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Services/EntityServises/PhotoService.java">
+      <file leaf-file-name="hibernate.cfg.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.862069" vertical-offset="1978" max-vertical-offset="3498">
-              <caret line="109" column="0" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="337" max-vertical-offset="1012">
+              <caret line="36" column="8" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -103,8 +108,18 @@
       <file leaf-file-name="BannedController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Controller/BannedController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7314578" vertical-offset="1892" max-vertical-offset="2640">
-              <caret line="118" column="21" selection-start-line="118" selection-start-column="21" selection-end-line="118" selection-end-column="21" />
+            <state vertical-scroll-proportion="0.32480818" vertical-offset="1589" max-vertical-offset="2640">
+              <caret line="97" column="4" selection-start-line="97" selection-start-column="4" selection-end-line="97" selection-end-column="4" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PhotoService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Services/EntityServises/PhotoService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-3.862069" vertical-offset="1846" max-vertical-offset="4004">
+              <caret line="100" column="0" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -113,46 +128,11 @@
       <file leaf-file-name="UserService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Services/EntityServises/UserService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1418" max-vertical-offset="6578">
-              <caret line="88" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1826" max-vertical-offset="7348">
+              <caret line="103" column="40" selection-start-line="103" selection-start-column="40" selection-end-line="103" selection-end-column="40" />
               <folding>
-                <marker date="1431185486942" expanded="true" signature="7603:7695" placeholder="select COUNT..banned..." />
+                <marker date="1431201575489" expanded="true" signature="8651:8743" placeholder="select COUNT..banned..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Model/User.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1408" max-vertical-offset="2948">
-              <caret line="101" column="22" selection-start-line="101" selection-start-column="22" selection-end-line="101" selection-end-column="22" />
-              <folding>
-                <element signature="e#2439#2440#0" expanded="true" />
-                <element signature="e#2494#2495#0" expanded="true" />
-                <element signature="e#2573#2574#0" expanded="true" />
-                <element signature="e#2629#2630#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ApiError.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Services/ApiUtil/ApiError.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2134" max-vertical-offset="2728">
-              <caret line="99" column="22" selection-start-line="99" selection-start-column="22" selection-end-line="99" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserPhotoTEst.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Tests/UserPhotoTEst.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2972" max-vertical-offset="3784">
-              <caret line="158" column="10" selection-start-line="158" selection-start-column="10" selection-end-line="158" selection-end-column="10" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -160,8 +140,45 @@
       <file leaf-file-name="Photo.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Model/Photo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="264" max-vertical-offset="2618">
-              <caret line="35" column="24" selection-start-line="35" selection-start-column="24" selection-end-line="35" selection-end-column="24" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="66" max-vertical-offset="6292">
+              <caret line="22" column="97" selection-start-line="22" selection-start-column="97" selection-end-line="22" selection-end-column="97" />
+              <folding>
+                <element signature="e#813#814#0" expanded="true" />
+                <element signature="e#838#839#0" expanded="true" />
+                <element signature="e#871#872#0" expanded="true" />
+                <element signature="e#899#900#0" expanded="true" />
+                <element signature="e#955#956#0" expanded="true" />
+                <element signature="e#981#982#0" expanded="true" />
+                <element signature="e#1019#1020#0" expanded="true" />
+                <element signature="e#1049#1050#0" expanded="true" />
+                <element signature="e#1106#1107#0" expanded="true" />
+                <element signature="e#1134#1135#0" expanded="true" />
+                <element signature="e#1173#1174#0" expanded="true" />
+                <element signature="e#1207#1208#0" expanded="true" />
+                <element signature="e#1270#1271#0" expanded="true" />
+                <element signature="e#1301#1302#0" expanded="true" />
+                <element signature="e#1346#1347#0" expanded="true" />
+                <element signature="e#1386#1387#0" expanded="true" />
+                <element signature="e#1462#1463#0" expanded="true" />
+                <element signature="e#1498#1499#0" expanded="true" />
+                <element signature="e#1556#1557#0" expanded="true" />
+                <element signature="e#1606#1607#0" expanded="true" />
+                <element signature="e#1684#1685#0" expanded="true" />
+                <element signature="e#1721#1722#0" expanded="true" />
+                <element signature="e#1781#1782#0" expanded="true" />
+                <element signature="e#1828#1829#0" expanded="true" />
+                <element signature="e#2577#2578#0" expanded="true" />
+                <element signature="e#2601#2602#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Place.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Model/Place.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="909" max-vertical-offset="1936">
+              <caret line="84" column="5" selection-start-line="73" selection-start-column="3" selection-end-line="84" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -170,8 +187,8 @@
       <file leaf-file-name="UserServiceTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Tests/UserServiceTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2882" max-vertical-offset="3476">
-              <caret line="152" column="8" selection-start-line="152" selection-start-column="8" selection-end-line="152" selection-end-column="8" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="2048" max-vertical-offset="3476">
+              <caret line="112" column="29" selection-start-line="112" selection-start-column="29" selection-end-line="112" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -186,8 +203,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/vraenchike/Services/DAO/UserDAOImpl.java" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/applicationContext.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/vraenchike/Config/AppConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/vraenchike/Config/SecurityConfig.java" />
         <option value="$PROJECT_DIR$/web/WEB-INF/dispatcher-servlet.xml" />
@@ -203,7 +218,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/vraenchike/Services/MyUserDetailsService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/vraenchike/Model/UserPhotoId.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/vraenchike/Model/UserPhoto.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/vraenchike/Exception/PhotoAlreadyLiked.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/vraenchike/Exception/PhotoAlreadyDisliked.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/vraenchike/Model/Likes.java" />
@@ -220,7 +234,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/vraenchike/Tests/testBan.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/vraenchike/Model/Banned.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/vraenchike/Tests/testFavoritePlace.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/vraenchike/Services/EntityServises/PlaceService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/vraenchike/Exception/PhotoAlreadyAddedeException.java" />
         <option value="$PROJECT_DIR$/web/WEB-INF/spring-security.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/vraenchike/Model/Place.java" />
@@ -229,13 +242,17 @@
         <option value="$PROJECT_DIR$/src/main/java/com/vraenchike/Controller/PlacesController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/vraenchike/Controller/PhotoFavoriteController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/vraenchike/Services/ApiUtil/ApiError.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/vraenchike/Services/PhotoDaoImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/vraenchike/Services/TestModelDAOImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/vraenchike/Services/EntityServises/PlaceService.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/vraenchike/Model/Photo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/vraenchike/Model/User.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/vraenchike/Tests/UserServiceTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/vraenchike/Services/EntityServises/PhotoService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/vraenchike/Services/EntityServises/UserService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/vraenchike/Model/User.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/vraenchike/Tests/UserPhotoTEst.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/vraenchike/Controller/PhotoController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/vraenchike/Services/EntityServises/UserService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/vraenchike/Services/EntityServises/PhotoService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/vraenchike/Controller/BannedController.java" />
       </list>
     </option>
@@ -1405,7 +1422,7 @@
       <workItem from="1430922212427" duration="142000" />
       <workItem from="1431030015094" duration="5642000" />
       <workItem from="1431089142723" duration="7858000" />
-      <workItem from="1431162799910" duration="14369000" />
+      <workItem from="1431162799910" duration="29908000" />
     </task>
     <task id="LOCAL-00001" summary="inital commit">
       <created>1428269737959</created>
@@ -1503,11 +1520,17 @@
       <option name="project" value="LOCAL" />
       <updated>1431176835277</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="fix like\dislike bug">
+      <created>1431185650559</created>
+      <option name="number" value="00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1431185650559</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="128154000" />
+    <option name="totallyTimeSpent" value="143693000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -1520,7 +1543,7 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32913387" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1420205" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.040263545" sideWeight="0.49840257" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.09956076" sideWeight="0.49840257" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1535,7 +1558,7 @@
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901135" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3784773" sideWeight="0.5007874" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34040996" sideWeight="0.4992126" order="5" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34260616" sideWeight="0.4992126" order="5" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1582,7 +1605,8 @@
     <MESSAGE value="+info about photo&#10;https://trello.com/c/eIyuZiEn/44--" />
     <MESSAGE value="fix bug&#10;+info about photo&#10;https://trello.com/c/eIyuZiEn/44--" />
     <MESSAGE value="fix like\dislike bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix like\dislike bug" />
+    <MESSAGE value="REMOVE FAVORITE PHOTO&#10;REMOVE MANY-TO-MANY ADDITIONAL FIELD" />
+    <option name="LAST_COMMIT_MESSAGE" value="REMOVE FAVORITE PHOTO&#10;REMOVE MANY-TO-MANY ADDITIONAL FIELD" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1631,12 +1655,30 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/vraenchike/Tests/UserPhotoTEst.java</url>
-          <line>153</line>
+          <line>152</line>
           <properties />
           <option name="timeStamp" value="76" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/vraenchike/Services/EntityServises/PhotoService.java</url>
+          <line>167</line>
+          <properties />
+          <option name="timeStamp" value="170" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/vraenchike/Services/EntityServises/PhotoService.java</url>
+          <line>153</line>
+          <properties />
+          <option name="timeStamp" value="171" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/vraenchike/Services/EntityServises/PhotoService.java</url>
+          <line>128</line>
+          <properties />
+          <option name="timeStamp" value="173" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="126" />
+      <option name="time" value="174" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1645,34 +1687,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Services/PhotoDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4074074" vertical-offset="0" max-vertical-offset="594">
-          <caret line="13" column="50" selection-start-line="13" selection-start-column="50" selection-end-line="13" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Model/UserPhotoId.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.45833334" vertical-offset="132" max-vertical-offset="1166">
-          <caret line="18" column="41" selection-start-line="18" selection-start-column="41" selection-end-line="18" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.11/junit-4.11.jar!/org/junit/internal/runners/model/ReflectiveCallable.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36585367" vertical-offset="130" max-vertical-offset="572">
-          <caret line="13" column="18" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Model/UserPhoto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334" vertical-offset="132" max-vertical-offset="1452">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="dbDummy://db-console:/f2e0c87e/f1180b22-88c4-430b-a64d-7ac19400e5c1/">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="347">
@@ -1828,13 +1842,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="968">
-          <caret line="34" column="49" selection-start-line="34" selection-start-column="49" selection-end-line="34" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Services/DAO/UserDAOImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="660" max-vertical-offset="1804">
@@ -1930,112 +1937,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Model/Place.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1329" max-vertical-offset="1936">
-          <caret line="100" column="26" selection-start-line="100" selection-start-column="26" selection-end-line="100" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#500#501#0" expanded="false" />
-            <element signature="e#526#527#0" expanded="false" />
-            <element signature="e#564#565#0" expanded="false" />
-            <element signature="e#594#595#0" expanded="false" />
-            <element signature="e#647#648#0" expanded="false" />
-            <element signature="e#673#674#0" expanded="false" />
-            <element signature="e#711#712#0" expanded="false" />
-            <element signature="e#741#742#0" expanded="false" />
-            <element signature="e#798#799#0" expanded="false" />
-            <element signature="e#827#828#0" expanded="false" />
-            <element signature="e#868#869#0" expanded="false" />
-            <element signature="e#904#905#0" expanded="false" />
-            <element signature="e#1021#1022#0" expanded="false" />
-            <element signature="e#1046#1047#0" expanded="false" />
-            <element signature="e#1079#1080#0" expanded="false" />
-            <element signature="e#1107#1108#0" expanded="false" />
-            <element signature="e#1162#1163#0" expanded="false" />
-            <element signature="e#1202#1203#0" expanded="false" />
-            <element signature="e#1245#1246#0" expanded="false" />
-            <element signature="e#1284#1285#0" expanded="false" />
-            <element signature="e#1646#1647#0" expanded="false" />
-            <element signature="e#1674#1675#0" expanded="false" />
-            <element signature="e#1719#1720#0" expanded="false" />
-            <element signature="e#1753#1754#0" expanded="false" />
-            <element signature="e#1799#1800#0" expanded="false" />
-            <element signature="e#1831#1832#0" expanded="false" />
-            <element signature="e#1896#1897#0" expanded="false" />
-            <element signature="e#1923#1924#0" expanded="false" />
-            <element signature="e#1962#1963#0" expanded="false" />
-            <element signature="e#1994#1995#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Controller/PlacesController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1637" max-vertical-offset="2244">
-          <caret line="34" column="10" selection-start-line="34" selection-start-column="10" selection-end-line="34" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Services/EntityServises/PlaceService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1193" max-vertical-offset="2398">
-          <caret line="74" column="29" selection-start-line="74" selection-start-column="28" selection-end-line="74" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Controller/PhotoFavoriteController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1122" max-vertical-offset="1914">
-          <caret line="35" column="35" selection-start-line="35" selection-start-column="35" selection-end-line="35" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Model/Photo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="264" max-vertical-offset="2618">
-          <caret line="35" column="24" selection-start-line="35" selection-start-column="24" selection-end-line="35" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.0.6.RELEASE/spring-webmvc-4.0.6.RELEASE.jar!/org/springframework/web/servlet/DispatcherServlet.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36437246" vertical-offset="7764" max-vertical-offset="15356">
-          <caret line="421" column="19" selection-start-line="421" selection-start-column="19" selection-end-line="421" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Tests/UserServiceTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2882" max-vertical-offset="3476">
-          <caret line="152" column="8" selection-start-line="152" selection-start-column="8" selection-end-line="152" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Services/ApiUtil/ApiError.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2337" max-vertical-offset="2728">
           <caret line="99" column="22" selection-start-line="99" selection-start-column="22" selection-end-line="99" selection-end-column="22" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Model/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1408" max-vertical-offset="2948">
-          <caret line="101" column="22" selection-start-line="101" selection-start-column="22" selection-end-line="101" selection-end-column="22" />
-          <folding>
-            <element signature="e#2439#2440#0" expanded="true" />
-            <element signature="e#2494#2495#0" expanded="true" />
-            <element signature="e#2573#2574#0" expanded="true" />
-            <element signature="e#2629#2630#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2047,52 +1953,196 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.0.6.RELEASE/spring-web-4.0.6.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Controller/PlacesController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3319838" vertical-offset="600" max-vertical-offset="3652">
-          <caret line="50" column="24" selection-start-line="50" selection-start-column="24" selection-end-line="50" selection-end-column="24" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1637" max-vertical-offset="2244">
+          <caret line="101" column="31" selection-start-line="101" selection-start-column="21" selection-end-line="101" selection-end-column="31" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Tests/UserPhotoTEst.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Services/PhotoDaoImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2972" max-vertical-offset="3784">
-          <caret line="158" column="10" selection-start-line="158" selection-start-column="10" selection-end-line="158" selection-end-column="10" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="174" max-vertical-offset="594">
+          <caret line="18" column="24" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Controller/PhotoController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Services/TestModelDAOImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="802" max-vertical-offset="4092">
-          <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="240" max-vertical-offset="660">
+          <caret line="20" column="24" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.0.6.RELEASE/spring-webmvc-4.0.6.RELEASE.jar!/org/springframework/web/servlet/DispatcherServlet.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.05263158" vertical-offset="7872" max-vertical-offset="15356">
+          <caret line="421" column="19" selection-start-line="421" selection-start-column="19" selection-end-line="421" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Model/UserPhotoId.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="446" max-vertical-offset="1056">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Controller/PhotoFavoriteController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="318" max-vertical-offset="1914">
+          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Model/UserPlaces.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.025252525" vertical-offset="161" max-vertical-offset="858">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Model/Photo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="66" max-vertical-offset="6292">
+          <caret line="22" column="97" selection-start-line="22" selection-start-column="97" selection-end-line="22" selection-end-column="97" />
+          <folding>
+            <element signature="e#813#814#0" expanded="true" />
+            <element signature="e#838#839#0" expanded="true" />
+            <element signature="e#871#872#0" expanded="true" />
+            <element signature="e#899#900#0" expanded="true" />
+            <element signature="e#955#956#0" expanded="true" />
+            <element signature="e#981#982#0" expanded="true" />
+            <element signature="e#1019#1020#0" expanded="true" />
+            <element signature="e#1049#1050#0" expanded="true" />
+            <element signature="e#1106#1107#0" expanded="true" />
+            <element signature="e#1134#1135#0" expanded="true" />
+            <element signature="e#1173#1174#0" expanded="true" />
+            <element signature="e#1207#1208#0" expanded="true" />
+            <element signature="e#1270#1271#0" expanded="true" />
+            <element signature="e#1301#1302#0" expanded="true" />
+            <element signature="e#1346#1347#0" expanded="true" />
+            <element signature="e#1386#1387#0" expanded="true" />
+            <element signature="e#1462#1463#0" expanded="true" />
+            <element signature="e#1498#1499#0" expanded="true" />
+            <element signature="e#1556#1557#0" expanded="true" />
+            <element signature="e#1606#1607#0" expanded="true" />
+            <element signature="e#1684#1685#0" expanded="true" />
+            <element signature="e#1721#1722#0" expanded="true" />
+            <element signature="e#1781#1782#0" expanded="true" />
+            <element signature="e#1828#1829#0" expanded="true" />
+            <element signature="e#2577#2578#0" expanded="true" />
+            <element signature="e#2601#2602#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Tests/UserServiceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2048" max-vertical-offset="3476">
+          <caret line="112" column="29" selection-start-line="112" selection-start-column="29" selection-end-line="112" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Model/Place.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="909" max-vertical-offset="1936">
+          <caret line="84" column="5" selection-start-line="73" selection-start-column="3" selection-end-line="84" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Services/EntityServises/PlaceService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.4741144" vertical-offset="2163" max-vertical-offset="2530">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Services/EntityServises/UserService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1418" max-vertical-offset="6578">
-          <caret line="88" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1826" max-vertical-offset="7348">
+          <caret line="103" column="40" selection-start-line="103" selection-start-column="40" selection-end-line="103" selection-end-column="40" />
           <folding>
-            <marker date="1431185486942" expanded="true" signature="7603:7695" placeholder="select COUNT..banned..." />
+            <marker date="1431201575489" expanded="true" signature="8651:8743" placeholder="select COUNT..banned..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.0.6.RELEASE/spring-web-4.0.6.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.35672516" vertical-offset="2320" max-vertical-offset="3652">
+          <caret line="130" column="19" selection-start-line="130" selection-start-column="19" selection-end-line="130" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Tests/UserPhotoTEst.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.88746804" vertical-offset="3283" max-vertical-offset="3872">
+          <caret line="179" column="12" selection-start-line="179" selection-start-column="12" selection-end-line="179" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Model/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.50127876" vertical-offset="904" max-vertical-offset="3344">
+          <caret line="78" column="23" selection-start-line="78" selection-start-column="23" selection-end-line="78" selection-end-column="23" />
+          <folding>
+            <element signature="e#2676#2677#0" expanded="true" />
+            <element signature="e#2727#2728#0" expanded="true" />
+            <element signature="e#2806#2807#0" expanded="true" />
+            <element signature="e#2858#2859#0" expanded="true" />
+            <element signature="e#3943#3944#0" expanded="true" />
+            <element signature="e#3972#3973#0" expanded="true" />
+            <element signature="e#4020#4021#0" expanded="true" />
+            <element signature="e#4056#4057#0" expanded="true" />
+            <element signature="e#4102#4103#0" expanded="true" />
+            <element signature="e#4139#4140#0" expanded="true" />
+            <element signature="e#4853#4854#0" expanded="true" />
+            <element signature="e#4890#4891#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="337" max-vertical-offset="1012">
+          <caret line="36" column="8" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Controller/PhotoController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1528" max-vertical-offset="4224">
+          <caret line="102" column="0" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Services/EntityServises/PhotoService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.862069" vertical-offset="1978" max-vertical-offset="3498">
-          <caret line="109" column="0" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
+        <state vertical-scroll-proportion="-3.862069" vertical-offset="1846" max-vertical-offset="4004">
+          <caret line="100" column="0" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Controller/BannedController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7314578" vertical-offset="1892" max-vertical-offset="2640">
-          <caret line="118" column="21" selection-start-line="118" selection-start-column="21" selection-end-line="118" selection-end-column="21" />
+        <state vertical-scroll-proportion="0.32480818" vertical-offset="1589" max-vertical-offset="2640">
+          <caret line="97" column="4" selection-start-line="97" selection-start-column="4" selection-end-line="97" selection-end-column="4" />
           <folding />
         </state>
       </provider>

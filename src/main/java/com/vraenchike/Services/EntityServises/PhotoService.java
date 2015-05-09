@@ -1,9 +1,6 @@
 package com.vraenchike.Services.EntityServises;
 
-import com.vraenchike.Exception.PhotoAlreadyAddedeException;
-import com.vraenchike.Exception.PhotoAlreadyDisliked;
-import com.vraenchike.Exception.PhotoAlreadyLiked;
-import com.vraenchike.Exception.UserNotAuth;
+import com.vraenchike.Exception.*;
 import com.vraenchike.Model.Likes;
 import com.vraenchike.Model.Photo;
 import com.vraenchike.Model.User;
@@ -61,9 +58,17 @@ public class PhotoService {
     public Photo LikePhoto(String url,String idApi,String ApiType,String credential,boolean isUser) throws SQLException,  UserNotAuth, PhotoAlreadyAddedeException {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        Photo p = null;
-        p = DAOFactory.getInstance().getPhotoDAO().getByURL(url,session);
-        if(p==null){
+        User user = UserService.getCurrentUser(session);
+        if(user==null){
+            if (session != null && session.isOpen())
+                session.close();
+            throw new UserNotAuth();
+        }
+        Query query = session.createQuery("from Photo where idApiServices=:idapi and apiServiceType=:apitype");
+        query.setParameter("apitype",ApiType);
+        query.setParameter("idapi",idApi);
+        Photo p = (Photo) query.uniqueResult();
+        if (p == null){
             p = new Photo(url,idApi,ApiType,0,0);
             session.save(p);
         }
@@ -71,7 +76,7 @@ public class PhotoService {
 
         String querystr = "from Likes where credentials=:credential " +
                 "and isuser=:isuser and idtarget=:idtarger";
-        Query query = session.createQuery(querystr);
+        query = session.createQuery(querystr);
         query.setParameter("credential",credential);
         query.setParameter("isuser",isUser);
         query.setParameter("idtarger",p.getId());
@@ -100,30 +105,46 @@ public class PhotoService {
 
         int currentLikes = p.getLikes();
         p.setLikes(currentLikes+1);
+        if(!user.getPhoto().contains(p)){
+            user.getPhoto().add(p);
 
-        session.save(p);
-        session.save(photoLike);
-        session.getTransaction().commit();
-        if (session != null && session.isOpen())
-            session.close();
-        new UserService().AddLikePhoto(url,idApi,ApiType);
-        return p;
-
-    }
-    public Photo DislikePhoto(String url,String idApi,String ApiType,String credential,boolean isUser) throws SQLException, PhotoAlreadyDisliked, UserNotAuth, PhotoAlreadyAddedeException {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        Photo p = null;
-        p = DAOFactory.getInstance().getPhotoDAO().getByURL(url,session);
-        if(p==null){
-            p = new Photo(url,idApi,ApiType,0,0);
-            session.save(p);
+            session.save(user);
         }
 
 
+        session.save(photoLike);
+        session.save(p);
+
+        session.flush();
+        session.getTransaction().commit();
+        session.flush();
+
+        if (session != null && session.isOpen())
+            session.close();
+         return p;
+
+    }
+    public Photo DislikePhoto(String url,String idApi,String ApiType,String credential,boolean isUser) throws SQLException, PhotoAlreadyDisliked, UserNotAuth, PhotoAlreadyAddedeException, PhotoNotFoundException {
+
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        User user = UserService.getCurrentUser(session);
+        if(user==null){
+            if (session != null && session.isOpen())
+                session.close();
+            throw new UserNotAuth();
+        }
+        Query query = session.createQuery("from Photo where idApiServices=:idapi and apiServiceType=:apitype");
+        query.setParameter("apitype",ApiType);
+        query.setParameter("idapi",idApi);
+        Photo p = (Photo) query.uniqueResult();
+        if (p == null){
+            throw new PhotoNotFoundException();
+        }
+
         String querystr = "from Likes where credentials=:credential " +
                 "and isuser=:isuser and idtarget=:idtarger";
-        Query query = session.createQuery(querystr);
+        query = session.createQuery(querystr);
         query.setParameter("credential",credential);
         query.setParameter("isuser",isUser);
         query.setParameter("idtarger",p.getId());
@@ -147,18 +168,17 @@ public class PhotoService {
         photoLike.setIslike(false);
 
 
-
-
         int currentLikes = p.getLikes();
         if(currentLikes>0)
-            p.setLikes(currentLikes-1);
-
-        session.save(p);
+        p.setLikes(currentLikes-1);
         session.save(photoLike);
+        session.save(p);
+        session.flush();
         session.getTransaction().commit();
+        session.flush();
+
         if (session != null && session.isOpen())
             session.close();
-     //   new UserService().AddLikePhoto(url,idApi,ApiType);
         return p;
 
     }

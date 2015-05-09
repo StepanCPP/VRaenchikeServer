@@ -37,6 +37,8 @@ public class UserService {
         userLoginInfo.setUser(u);
         u.setUserLoginInfo(userLoginInfo);
         session.save(u);
+        session.flush();
+        session.clear();
         session.getTransaction().commit();
         lastRegisterUserLogin  = u.getUserLoginInfo().getLogin();
 
@@ -71,21 +73,44 @@ public class UserService {
     }
 
     public Photo AddFavoritePhoto( String url,String idApi,String ApiType) throws SQLException, UserNotAuth, PhotoAlreadyAddedeException {
-        return AddPhoto(url,idApi,ApiType,"f");
+        return AddLikePhoto(url,idApi,ApiType);
     }
     public Photo RemoveFavoritePhoto(Integer id) throws SQLException, UserNotAuth, PhotoNotFoundException {
-        return RemovePhoto(id,"f");
+        return null;
 
     }
 
-    public void AddLikePhoto(String url,String idApi,String ApiType) throws SQLException, UserNotAuth, PhotoAlreadyAddedeException {
-        AddPhoto(url,idApi,ApiType,"l");
+    public Photo AddLikePhoto(String url,String idApi,String ApiType) throws SQLException, UserNotAuth, PhotoAlreadyAddedeException {
+        //AddPhoto(url,idApi,ApiType,"l");
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        User user = getCurrentUser(session);
+        if(user==null){
+            if (session != null && session.isOpen())
+                session.close();
+            throw new UserNotAuth();
+        }
+        Query query = session.createQuery("from Photo where idApiServices=:idapi and apiServiceType=:apitype");
+        query.setParameter("apitype",ApiType);
+        query.setParameter("idapi",idApi);
+        Photo p = (Photo) query.uniqueResult();
+        if (p == null){
+            p = new Photo(url,idApi,ApiType,0,0);
+        }
+        p.setLikes(p.getLikes()+1);
+        user.getPhoto().add(p);
+        session.save(user);
+        session.flush();
+      session.getTransaction().commit();
+        session.close();
+        return p;
     }
-    public void RemoveLikePhoto(Integer id) throws SQLException, UserNotAuth, PhotoNotFoundException {
-        RemovePhoto(id,"l");
+    public Photo RemoveLikePhoto(Integer id) throws SQLException, UserNotAuth, PhotoNotFoundException {
+            //RemovePhoto(id,"l");
+        return null;
     }
 
-    private Photo AddPhoto(String url,String idApi, String ApiType,String type) throws SQLException, UserNotAuth, PhotoAlreadyAddedeException {
+  /*  private Photo AddPhoto(String url,String idApi, String ApiType,String type) throws SQLException, UserNotAuth, PhotoAlreadyAddedeException {
         Session session = HibernateUtil.getSessionFactory().openSession();
 
         User user = getCurrentUser(session);
@@ -113,9 +138,12 @@ public class UserService {
         // p.getUsers().add(user);
 
         session.save(user);
-        session.save(p);
+        session.saveOrUpdate(p);
         try {
+            session.flush();
+            session.clear();
             session.getTransaction().commit();
+
         }catch (org.hibernate.NonUniqueObjectException e){
             //throw new PhotoAlreadyAddedeException();
         }
@@ -124,7 +152,8 @@ public class UserService {
 
         return p;
 
-    }
+    }*/
+    /*
     private Photo   RemovePhoto(Integer id,String type) throws SQLException, PhotoNotFoundException, UserNotAuth {
         Session session = HibernateUtil.getSessionFactory().openSession();
         User user = getCurrentUser(session);
@@ -153,6 +182,8 @@ public class UserService {
 
 
         //session.save(user);
+        session.flush();
+        session.clear();
         session.getTransaction().commit();
         //DAOFactory.getInstance().getUserDAO().updateUser(uid,user,session);
 
@@ -163,7 +194,7 @@ public class UserService {
             return toReturn;
         }
         throw new PhotoNotFoundException();
-    }
+    }*/
 
 
 
@@ -252,6 +283,8 @@ public class UserService {
         user.getBanned().add(banned);
         session.save(banned);
         session.save(user);
+        session.flush();
+        session.clear();
         session.getTransaction().commit();
         session.close();
         return banned;
@@ -276,6 +309,8 @@ public class UserService {
             }
         }
         session.save(user);
+        session.flush();
+        session.clear();
         session.getTransaction().commit();
         session.close();
 

@@ -55,17 +55,19 @@ public class User implements Serializable,JSONable {
     }
     //many ot many relationship
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "pk.u",
-            cascade = CascadeType.ALL)
-    public Set <UserPhoto> getUserPhoto() {
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "userphotos",  joinColumns = {
+            @JoinColumn(name = "idUser", nullable = false, updatable = false) },
+            inverseJoinColumns = { @JoinColumn(name = "idPhoto",
+                    nullable = false, updatable = false) })
+    public Set <Photo> getPhoto() {
         return usersPhoto;
     }
-
-
-
-    public void setUserPhoto(Set <UserPhoto> users) {
+    public void setPhoto(Set <Photo> users) {
         this.usersPhoto = users;
     }
+
+
 
     public void setBanned(Set<Banned> banned) {
         this.banned = banned;
@@ -74,9 +76,9 @@ public class User implements Serializable,JSONable {
 
 
     @Transient
-    private Set<Photo> getPhotos(String type,int offest,int count,boolean ordering)
+    private Set<Photo> getPhotos(int offest,int count,boolean ordering)
     {
-        int offsetCount = 0;
+       /* int offsetCount = 0;
         Set<Photo> photos = null;
         if(ordering){
             photos =  new TreeSet<>();
@@ -89,24 +91,25 @@ public class User implements Serializable,JSONable {
             if(next.getDeleted()==0 && next.getType().equals(type) && offsetCount++>=offest)
                 photos.add(next.getPhoto());
         }
-        return photos;
+        return photos;*/
+        return  this.getPhoto();
     }
 
 
     @Transient
     public Set<Photo> getFavoritePhoto(int offset,int count)
     {
-        return getPhotos("f",offset,count,true);
+        return getPhotos(offset,count,true);
     }
     @Transient
     public Set<Photo> getLikedPhoto(int offset,int count)
     {
-        return getPhotos("l",offset,count,false);
+        return getPhotos(offset,count,false);
     }
     @Transient
     public Set<Integer> getLikedPhotoIds(int offset,int count)
     {
-        int offsetCount = 0;
+        /*int offsetCount = 0;
         Set<Integer> photos = new HashSet<>();
 
         Iterator<UserPhoto> iterator = this.getUserPhoto().iterator();
@@ -115,7 +118,14 @@ public class User implements Serializable,JSONable {
             if(next.getDeleted()==0 && next.getType().equals("l") && offsetCount++>=offset)
                 photos.add(next.getPhoto().getId());
         }
-        return photos;
+        return photos;*/
+
+        Set<Photo> photos = this.getPhotos(offset, count, true);
+        Set<Integer> p = new HashSet<>();
+        for(Photo i : photos){
+            p.add(i.getId());
+        }
+        return p;
     }
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -142,7 +152,7 @@ public class User implements Serializable,JSONable {
     private Date lastPhotoView = new Date();
     //mapping privates
     private Set<Place> places = new HashSet<>();
-    private Set <UserPhoto> usersPhoto = new TreeSet<>();
+    private Set <Photo> usersPhoto = new TreeSet<>();
     private Set<Banned> banned = new HashSet<>();
 
 

@@ -15,7 +15,8 @@ public class PhotoDaoImpl extends PhotoDao{
         session.beginTransaction();
 
         session.save(p);
-
+        session.flush();
+        session.clear();
         session.getTransaction().commit();
         return false;
     }

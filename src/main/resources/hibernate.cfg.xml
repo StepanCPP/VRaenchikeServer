@@ -16,7 +16,8 @@
            <!--jdbc:mysql://localhost/temp_measur-->
         </property>
 
-        <property name="hibernate.current_session_context_class">org.hibernate.context.internal.ThreadLocalSessionContext</property>
+
+
 
                 <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password"></property>
@@ -30,8 +31,9 @@
         <mapping class="com.vraenchike.Model.UserLoginInfo"/>
         <mapping class="com.vraenchike.Model.Photo"/>
         <mapping class="com.vraenchike.Model.UserPlaces"/>
-        <mapping class="com.vraenchike.Model.UserPhoto"/>
+      <!--  <mapping class="com.vraenchike.Model.UserPhoto"/>
         <mapping class="com.vraenchike.Model.UserPhotoId"/>
+        -->
         <mapping class="com.vraenchike.Model.Likes"/>
 
 

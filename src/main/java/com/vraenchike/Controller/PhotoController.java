@@ -1,9 +1,6 @@
 package com.vraenchike.Controller;
 
-import com.vraenchike.Exception.PhotoAlreadyAddedeException;
-import com.vraenchike.Exception.PhotoAlreadyDisliked;
-import com.vraenchike.Exception.PhotoAlreadyLiked;
-import com.vraenchike.Exception.UserNotAuth;
+import com.vraenchike.Exception.*;
 import com.vraenchike.Model.Photo;
 import com.vraenchike.Model.User;
 import com.vraenchike.Services.ApiUtil.ApiError;
@@ -63,6 +60,7 @@ public class PhotoController {
         } else {
             credential = curUser.getUserLoginInfo().getLogin();
         }
+        session.close();
         try {
             Photo photo = photoService.LikePhoto(url, idApi, apiType, credential, isuser);
             status.setMessage(photo.toJSONObject().toString());
@@ -75,7 +73,7 @@ public class PhotoController {
         } catch (PhotoAlreadyAddedeException e) {
             return ApiError.THIS_PHOTO_IS_ALREADY_LIKED.toStatus().toJSONObject().toString();
         }
-        session.close();
+
         return status.toJSONObject().toString();
     }
 
@@ -117,6 +115,8 @@ public class PhotoController {
             return status.toJSONObject().toString();
         } catch (PhotoAlreadyAddedeException e) {
             return ApiError.PHOTO_IS_FAVORED_ALREADY.toStatus().toJSONObject().toString();
+        } catch (PhotoNotFoundException e) {
+            return ApiError.PHOTO_NOT_FOUND.toStatus().toJSONObject().toString();
         }
         session.close();
         return status.toJSONObject().toString();
@@ -145,8 +145,11 @@ public class PhotoController {
             try {
                 currentUser = UserService.getCurrentUser(session);
                 likedCurrentUserPhotos = currentUser.getLikedPhotoIds(0, 200);
-                outJsonResult.put("favoritePhotos",
-                        photoTominimizeInfoArray(currentUser.getFavoritePhoto(0,1000),likedCurrentUserPhotos));
+
+               // outJsonResult.put("favoritePhotos",
+                //        photoTominimizeInfoArray(currentUser.getFavoritePhoto(0,1000),
+                 //               likedCurrentUserPhotos));
+
             } catch (SQLException e) {
                 e.printStackTrace();
             }

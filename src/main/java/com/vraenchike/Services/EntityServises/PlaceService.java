@@ -34,6 +34,8 @@ public class PlaceService {
         user.getPlaces().add(p);
         session.save(p);
         session.save(user);
+        session.flush();
+        session.clear();
         session.getTransaction().commit();
         return p;
     }
@@ -58,6 +60,8 @@ public class PlaceService {
             }
         }
         session.save(user);
+        session.flush();
+        session.clear();
         session.getTransaction().commit();
         if (session != null && session.isOpen())
             session.close();
@@ -108,6 +112,8 @@ public class PlaceService {
         place.setRadius(radius);
         place.setName(name);
         session.save(place);
+        session.flush();
+        session.clear();
         session.getTransaction().commit();
         session.close();
         return place;

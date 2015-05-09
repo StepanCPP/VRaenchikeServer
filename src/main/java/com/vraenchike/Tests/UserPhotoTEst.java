@@ -1,9 +1,6 @@
 package com.vraenchike.Tests;
 
-import com.vraenchike.Exception.PhotoAlreadyAddedeException;
-import com.vraenchike.Exception.PhotoAlreadyDisliked;
-import com.vraenchike.Exception.PhotoAlreadyLiked;
-import com.vraenchike.Exception.UserNotAuth;
+import com.vraenchike.Exception.*;
 import com.vraenchike.Model.Likes;
 import com.vraenchike.Model.Photo;
 import com.vraenchike.Services.EntityServises.PhotoService;
@@ -96,6 +93,8 @@ public class UserPhotoTEst extends Assert {
                 userNotAuth.printStackTrace();
             } catch (PhotoAlreadyAddedeException e) {
                 e.printStackTrace();
+            } catch (PhotoNotFoundException e) {
+                e.printStackTrace();
             }
         }
 
@@ -176,6 +175,8 @@ public class UserPhotoTEst extends Assert {
         } catch (UserNotAuth userNotAuth) {
             userNotAuth.printStackTrace();
         } catch (PhotoAlreadyAddedeException e) {
+            e.printStackTrace();
+        } catch (PhotoNotFoundException e) {
             e.printStackTrace();
         }
     }

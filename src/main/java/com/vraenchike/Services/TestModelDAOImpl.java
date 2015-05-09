@@ -17,7 +17,8 @@ public class TestModelDAOImpl extends TestModelDAO {
 
 
         session.save(t);
-
+        session.flush();
+        session.clear();
         transaction.commit();
 
 
