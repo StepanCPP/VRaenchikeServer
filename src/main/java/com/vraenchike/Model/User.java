@@ -74,10 +74,15 @@ public class User implements Serializable,JSONable {
 
 
     @Transient
-    private TreeSet<Photo> getPhotos(String type,int offest,int count)
+    private Set<Photo> getPhotos(String type,int offest,int count,boolean ordering)
     {
         int offsetCount = 0;
-        TreeSet<Photo> photos = new TreeSet<>();
+        Set<Photo> photos = null;
+        if(ordering){
+            photos =  new TreeSet<>();
+        }else{
+            photos = new HashSet<>();
+        }
         Iterator<UserPhoto> iterator = this.getUserPhoto().iterator();
         while (iterator.hasNext() && photos.size()<count){
             UserPhoto next = iterator.next();
@@ -86,15 +91,31 @@ public class User implements Serializable,JSONable {
         }
         return photos;
     }
+
+
     @Transient
-    public TreeSet<Photo> getFavoritePhoto(int offset,int count)
+    public Set<Photo> getFavoritePhoto(int offset,int count)
     {
-        return getPhotos("f",offset,count);
+        return getPhotos("f",offset,count,true);
     }
     @Transient
-    public TreeSet<Photo> getLikedPhoto()
+    public Set<Photo> getLikedPhoto(int offset,int count)
     {
-        return getPhotos("l",0,200);
+        return getPhotos("l",offset,count,false);
+    }
+    @Transient
+    public Set<Integer> getLikedPhotoIds(int offset,int count)
+    {
+        int offsetCount = 0;
+        Set<Integer> photos = new HashSet<>();
+
+        Iterator<UserPhoto> iterator = this.getUserPhoto().iterator();
+        while (iterator.hasNext() && photos.size()<count){
+            UserPhoto next = iterator.next();
+            if(next.getDeleted()==0 && next.getType().equals("l") && offsetCount++>=offset)
+                photos.add(next.getPhoto().getId());
+        }
+        return photos;
     }
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)

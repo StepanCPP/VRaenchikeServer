@@ -150,7 +150,7 @@ public class UserServiceTest extends Assert {
 
 
 
-        TreeSet<Photo> userFavoritePhoto = suser.getFavoritePhoto(0,150);
+        Set<Photo> userFavoritePhoto = suser.getFavoritePhoto(0,150);
         Iterator<Photo> it1 = userFavoritePhoto.iterator();
         while (it1.hasNext()){
             assertFalse(removedPhoto.contains(it1.next()));

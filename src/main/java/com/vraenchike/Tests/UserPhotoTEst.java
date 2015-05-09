@@ -55,9 +55,7 @@ public class UserPhotoTEst extends Assert {
                 photoService.LikePhoto(l,"asd","vk",myRandomIp,false);
             } catch (SQLException e) {
                 fail(e.getMessage());
-            } catch (PhotoAlreadyLiked photoAlreadyLiked) {
-               fail("PHOTO ALREADY LIKED!?");
-            } catch (UserNotAuth userNotAuth) {
+            }  catch (UserNotAuth userNotAuth) {
                 userNotAuth.printStackTrace();
             } catch (PhotoAlreadyAddedeException e) {
                 e.printStackTrace();
@@ -158,8 +156,6 @@ public class UserPhotoTEst extends Assert {
             fail("photo already liked");
         } catch (SQLException e) {
             fail(e.getMessage());
-        } catch (PhotoAlreadyLiked photoAlreadyLiked) {
-
         } catch (UserNotAuth userNotAuth) {
             userNotAuth.printStackTrace();
         } catch (PhotoAlreadyAddedeException e) {

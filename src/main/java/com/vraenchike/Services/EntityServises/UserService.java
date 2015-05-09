@@ -49,7 +49,7 @@ public class UserService {
 
         //        String login = SecurityContextHolder.getContext().getAuthentication().getName();
 
-       // String login = lastRegisterUserLogin;
+        // String login = lastRegisterUserLogin;
         //String login =  SecurityContextHolder.getContext().getAuthentication().getName();
 //        SecurityContextHolder.getContext().getAuthentication().getAuthorities();
 
@@ -71,10 +71,10 @@ public class UserService {
     }
 
     public Photo AddFavoritePhoto( String url,String idApi,String ApiType) throws SQLException, UserNotAuth, PhotoAlreadyAddedeException {
-       return AddPhoto(url,idApi,ApiType,"f");
+        return AddPhoto(url,idApi,ApiType,"f");
     }
     public Photo RemoveFavoritePhoto(Integer id) throws SQLException, UserNotAuth, PhotoNotFoundException {
-       return RemovePhoto(id,"f");
+        return RemovePhoto(id,"f");
 
     }
 
@@ -117,7 +117,7 @@ public class UserService {
         try {
             session.getTransaction().commit();
         }catch (org.hibernate.NonUniqueObjectException e){
-            throw new PhotoAlreadyAddedeException();
+            //throw new PhotoAlreadyAddedeException();
         }
         if (session != null && session.isOpen())
             session.close();
@@ -131,7 +131,7 @@ public class UserService {
         if(user==null){
             if (session != null && session.isOpen())
                 session.close();
-           throw new UserNotAuth();
+            throw new UserNotAuth();
         }
 
 
@@ -221,7 +221,7 @@ public class UserService {
 
     private Banned Ban(String link,String linkType) throws SQLException, UserNotAuth, UserAlreadyBannedException {
         Session session = HibernateUtil.getSessionFactory().openSession();
-       session.beginTransaction();
+        session.beginTransaction();
         User user = getCurrentUser(session);
         if(user==null){
             if (session != null && session.isOpen())

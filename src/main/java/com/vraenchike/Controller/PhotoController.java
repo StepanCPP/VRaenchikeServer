@@ -64,23 +64,16 @@ public class PhotoController {
             credential = curUser.getUserLoginInfo().getLogin();
         }
         try {
-            Photo photo = photoService.LikePhoto(url,idApi,apiType, credential, isuser);
+            Photo photo = photoService.LikePhoto(url, idApi, apiType, credential, isuser);
             status.setMessage(photo.toJSONObject().toString());
 
-        } catch (PhotoAlreadyLiked photoAlreadyLiked) {
-
-            ApiError error = ApiError.THIS_PHOTO_IS_ALREADY_LIKED;
-
-            status.setCode(error.getCode());
-            status.setMessage(error.toString());
-            return status.toJSONObject().toString();
-        } catch (UserNotAuth userNotAuth) {
+        }  catch (UserNotAuth userNotAuth) {
             ApiError error = ApiError.USER_NOT_AUTH;
             status.setCode(error.getCode());
             status.setMessage(error.toString());
             return status.toJSONObject().toString();
         } catch (PhotoAlreadyAddedeException e) {
-            return ApiError.PHOTO_IS_FAVORED_ALREADY.toStatus().toJSONObject().toString();
+            return ApiError.THIS_PHOTO_IS_ALREADY_LIKED.toStatus().toJSONObject().toString();
         }
         session.close();
         return status.toJSONObject().toString();
@@ -142,8 +135,22 @@ public class PhotoController {
         status.setCode(0);
         HashMap<String,ArrayList<String>> ApiTypeToIdApi = new HashMap<>();
         JSONObject outJsonResult = new JSONObject();
+        Set<Integer> likedCurrentUserPhotos = new HashSet<>();
+
+
 
         try {
+            User currentUser = null;
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            try {
+                currentUser = UserService.getCurrentUser(session);
+                likedCurrentUserPhotos = currentUser.getLikedPhotoIds(0, 200);
+                outJsonResult.put("favoritePhotos",
+                        photoTominimizeInfoArray(currentUser.getFavoritePhoto(0,1000),likedCurrentUserPhotos));
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
             JSONArray array = new JSONArray(photos_json_array);
             for(int i=0;i<array.length();i++){
                 JSONObject jsonObject = array.getJSONObject(i);
@@ -158,7 +165,7 @@ public class PhotoController {
                 strings.add(idApi);
             }
             Set<Map.Entry<String, ArrayList<String>>> entries = ApiTypeToIdApi.entrySet();
-            Session session = HibernateUtil.getSessionFactory().openSession();
+
             ArrayList<Photo> outResult = new ArrayList<>();
             for(Map.Entry<String,ArrayList<String>> element : entries){
                 Query query = session.createQuery("from Photo where idApiServices in (:ids) and apiServiceType=:type and likes>0");
@@ -168,23 +175,20 @@ public class PhotoController {
 
                 //Add to json out result
 
-                outJsonResult.put("likedPhotos",photoTominimizeInfoArray(list));
+                outJsonResult.put("likedPhotos",photoTominimizeInfoArray(list,likedCurrentUserPhotos));
             }
-            User currentUser = UserService.getCurrentUser(session);
-            outJsonResult.put("favoritePhotos",
-                    photoTominimizeInfoArray(currentUser.getFavoritePhoto(0,1000)));
-            status.setMessage(outJsonResult.toString());
+
+                      status.setMessage(outJsonResult.toString());
+
             if(session.isOpen())
                 session.close();
 
         } catch (JSONException e) {
             return ApiError.BAD_JSON_REQUEST.toStatus().toJSONObject().toString();
-        } catch (SQLException e) {
-            return ApiError.USER_NOT_AUTH.toStatus().toJSONObject().toString();
         }
         return status.toJSONObject().toString();
     }
-    private JSONArray photoTominimizeInfoArray(Collection list) throws JSONException {
+    private JSONArray photoTominimizeInfoArray(Collection list,Set<Integer> likedCurrentUserPhotos) throws JSONException {
         JSONArray Photos = new JSONArray();
         for(Object o : list){
             Photo p = (Photo) o;
@@ -195,6 +199,8 @@ public class PhotoController {
             jsonPhoto.put("ApiType",p.getApiServiceType());
             jsonPhoto.put("id",p.getId());
             jsonPhoto.put("likes",p.getLikes());
+            if(likedCurrentUserPhotos.contains(p.getId()));
+                jsonPhoto.put("liked","1");
             Photos.put(jsonPhoto);
         }
         return Photos;

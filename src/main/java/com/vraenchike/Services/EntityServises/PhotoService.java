@@ -32,7 +32,7 @@ public class PhotoService {
 
 
 
-        TreeSet<Photo> favoritePhoto = user.getFavoritePhoto(offset, count);
+        Set<Photo> favoritePhoto = user.getFavoritePhoto(offset, count);
         session.close();
         return favoritePhoto;
     }
@@ -58,7 +58,7 @@ public class PhotoService {
         return query.executeUpdate()>0;
     }
 
-    public Photo LikePhoto(String url,String idApi,String ApiType,String credential,boolean isUser) throws SQLException, PhotoAlreadyLiked, UserNotAuth, PhotoAlreadyAddedeException {
+    public Photo LikePhoto(String url,String idApi,String ApiType,String credential,boolean isUser) throws SQLException,  UserNotAuth, PhotoAlreadyAddedeException {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         Photo p = null;
@@ -78,7 +78,7 @@ public class PhotoService {
         Object o = query.uniqueResult();
         if(o!=null && ((Likes)o).isIslike())
         {
-            throw  new PhotoAlreadyLiked();
+            throw  new PhotoAlreadyAddedeException();
         }
 
 
@@ -158,7 +158,7 @@ public class PhotoService {
         session.getTransaction().commit();
         if (session != null && session.isOpen())
             session.close();
-        new UserService().AddLikePhoto(url,idApi,ApiType);
+     //   new UserService().AddLikePhoto(url,idApi,ApiType);
         return p;
 
     }
