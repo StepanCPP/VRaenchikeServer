@@ -188,7 +188,7 @@ public class PhotoController {
         JSONArray Photos = new JSONArray();
         for(Object o : list){
             Photo p = (Photo) o;
-            if(p.getIdApiServices().isEmpty())
+            if(p.getIdApiServices()==null)
                 continue;
             JSONObject jsonPhoto = new JSONObject();
             jsonPhoto.put("idApi",p.getIdApiServices());
