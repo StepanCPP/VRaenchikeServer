@@ -10,8 +10,8 @@
 
     <http pattern="/favicon.ico" security="none" />
     <http auto-config="true">
-        <intercept-url pattern="/*" access="ROLE_USER" />
-
+      <!--  <intercept-url pattern="/**" access="ROLE_USER" />
+-->
     </http>
 
 

@@ -6,10 +6,7 @@ import org.json.JSONObject;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 /**
  * Created by Artyom on 15.04.2015.
@@ -58,7 +55,8 @@ public class User implements Serializable,JSONable {
     }
     //many ot many relationship
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "pk.u",cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "pk.u",
+            cascade = CascadeType.ALL)
     public Set <UserPhoto> getUserPhoto() {
         return usersPhoto;
     }
@@ -73,6 +71,31 @@ public class User implements Serializable,JSONable {
         this.banned = banned;
     }
 
+
+
+    @Transient
+    private TreeSet<Photo> getPhotos(String type,int offest,int count)
+    {
+        int offsetCount = 0;
+        TreeSet<Photo> photos = new TreeSet<>();
+        Iterator<UserPhoto> iterator = this.getUserPhoto().iterator();
+        while (iterator.hasNext() && photos.size()<count){
+            UserPhoto next = iterator.next();
+            if(next.getDeleted()==0 && next.getType().equals(type) && offsetCount++>=offest)
+                photos.add(next.getPhoto());
+        }
+        return photos;
+    }
+    @Transient
+    public TreeSet<Photo> getFavoritePhoto(int offset,int count)
+    {
+        return getPhotos("f",offset,count);
+    }
+    @Transient
+    public TreeSet<Photo> getLikedPhoto()
+    {
+        return getPhotos("l",0,200);
+    }
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "userplaces",  joinColumns = {
@@ -111,8 +134,7 @@ public class User implements Serializable,JSONable {
         return jo;
 
     }
-    @OneToMany (fetch = FetchType.LAZY, mappedBy = "user",
-            cascade = CascadeType.ALL)
+    @OneToMany (fetch = FetchType.LAZY, mappedBy = "user",orphanRemoval = true)
         public Set<Banned> getBanned() {
             return banned;
         }

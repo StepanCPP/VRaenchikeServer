@@ -18,15 +18,38 @@ import java.util.TreeSet;
 @Table(name = "photo")
 public class Photo implements Comparable<Photo> {
     private int id;
-    private String url = " ";
+    private String url = "";
     private int likes=0;
     private int dislikes=0;
+    private String idApiServices = "";
+    private String ApiServiceType = "";
+
+    @Column(name = "ApiServiceType")
+    public String getApiServiceType() {
+        return ApiServiceType;
+    }
+
+    public void setApiServiceType(String apiServiceType) {
+        ApiServiceType = apiServiceType;
+    }
+
+    @Column(name = "idApiServices")
+    public String getIdApiServices() {
+        return idApiServices;
+    }
+
+    public void setIdApiServices(String idApiServices) {
+        this.idApiServices = idApiServices;
+    }
+
     private Set <UserPhoto> usersPhoto = new TreeSet<>();
 
-    public Photo(String url, int likes, int dislikes) {
+    public Photo(String url,String idApi,String ApiType, int likes, int dislikes) {
         this.url = url;
         this.likes = likes;
         this.dislikes = dislikes;
+        this.setApiServiceType(ApiType);
+        this.setIdApiServices(idApi);
     }
 
     public Photo() {
@@ -89,6 +112,9 @@ public class Photo implements Comparable<Photo> {
             jo.put("url",url);
             jo.put("likes",likes);
             jo.put("dislikes",dislikes);
+             jo.put("id",getId());
+            jo.put("idApi",getIdApiServices());
+            jo.put("ApiType",getApiServiceType());
             return jo;
     }
 

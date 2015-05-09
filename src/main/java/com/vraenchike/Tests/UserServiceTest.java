@@ -1,5 +1,6 @@
 package com.vraenchike.Tests;
 
+import com.vraenchike.Exception.PhotoAlreadyAddedeException;
 import com.vraenchike.Exception.PhotoNotFoundException;
 import com.vraenchike.Exception.UserCredentialAlreadyExist;
 import com.vraenchike.Exception.UserNotAuth;
@@ -87,14 +88,16 @@ public class UserServiceTest extends Assert {
             int likes = new Random().nextInt(12345);
             //Photo p = new Photo(url,likes,dis);
             try {
-                service.AddFavoritePhoto(url);
-                photos.add(new Photo(url,likes,dis));
+                service.AddFavoritePhoto(url,"123","vk");
+                photos.add(new Photo(url,"123","vk",likes,dis));
 
 
             } catch (SQLException e) {
                 fail(e.getMessage());
             } catch (UserNotAuth userNotAuth) {
                 userNotAuth.printStackTrace();
+            } catch (PhotoAlreadyAddedeException e) {
+                e.printStackTrace();
             }
         }
 
@@ -125,7 +128,7 @@ public class UserServiceTest extends Assert {
         while (userPhotoIterator.hasNext() && counter++<toRemoveCount){
             try {
                 Photo next = userPhotoIterator.next();
-                service.RemoveFavoritePhoto(next.getUrl());
+                service.RemoveFavoritePhoto(next.getId());
                 removedPhoto.add(next);
             } catch (SQLException e) {
                 fail(e.getMessage());

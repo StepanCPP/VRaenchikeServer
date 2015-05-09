@@ -32,5 +32,8 @@
         <mapping class="com.vraenchike.Model.UserPlaces"/>
         <mapping class="com.vraenchike.Model.UserPhoto"/>
         <mapping class="com.vraenchike.Model.UserPhotoId"/>
+        <mapping class="com.vraenchike.Model.Likes"/>
+
+
     </session-factory>
 </hibernate-configuration>

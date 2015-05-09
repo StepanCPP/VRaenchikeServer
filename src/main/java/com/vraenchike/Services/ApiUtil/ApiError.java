@@ -3,7 +3,7 @@ package com.vraenchike.Services.ApiUtil;
 /**
  * Created by Artyom on 02.05.2015.
  */
-public enum ApiError {
+public enum     ApiError {
 
 
     USER_NOT_FOUND, PHOTO_NOT_FOUND, PLACE_NOT_FOUND,
@@ -11,9 +11,10 @@ public enum ApiError {
     THIS_USER_IS_ALREADY_INSIST,THIS_PHOTO_IS_ALREADY_INSIST,
     USER_IS_BANNED_ALREADY, PHOTO_IS_BANNED_ALREADY,
     PLACE_IS_BANNED_ALREADY, USER_IS_FAVORED_ALREADY, PHOTO_IS_FAVORED_ALREADY,
-    PLACE_IS_FAVORED_ALREADY;
+    PLACE_IS_FAVORED_ALREADY,THIS_PHOTO_IS_ALREADY_LIKED,THIS_PHOTO_IS_ALREADY_DISLIKED,
+    USER_NOT_AUTH,BANNED_NOT_FOUND,USER_ALREADY_BANNED,PHOTO_FAVORITE_ALREADY;
 
-    public String getCode(){
+    public int getCode(){
         String toReturn = null;
         switch (this) {
 
@@ -69,11 +70,42 @@ public enum ApiError {
                 toReturn = "13";
                 break;
             }
+            case THIS_PHOTO_IS_ALREADY_LIKED:{
+                toReturn="14";
+                break;
+            }
+            case THIS_PHOTO_IS_ALREADY_DISLIKED:{
+                toReturn="15";
+                break;
+            }
+            case USER_NOT_AUTH:{
+                toReturn="16";
+                break;
+            }
+            case BANNED_NOT_FOUND:{
+                toReturn="17";
+                break;
+            }
+            case USER_ALREADY_BANNED:{
+                toReturn="18";
+                break;
+            }
+            case PHOTO_FAVORITE_ALREADY:{
+                toReturn="19";
+                break;
+            }
 
 
 
         }
-        return toReturn;
+        return Integer.parseInt(toReturn);
+    }
+    public Status toStatus()
+    {
+        Status status = new Status();
+        status.setCode(this.getCode());
+        status.setMessage(this.toString());
+        return status;
     }
 
 

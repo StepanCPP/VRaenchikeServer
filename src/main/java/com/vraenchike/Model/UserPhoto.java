@@ -35,6 +35,15 @@ public class UserPhoto implements Comparable<UserPhoto> {
         this.type = type;
     }
 
+    @Column(name = "deleted")
+    public int getDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(int deleted) {
+        this.deleted = deleted;
+    }
+
     @Transient
     public User getUser() {
         return getPk().getU();
@@ -56,8 +65,9 @@ public class UserPhoto implements Comparable<UserPhoto> {
 
 
     private UserPhotoId pk = new UserPhotoId();
-    private String type = "hi bro";
+    private String type = "like";
     private Date addedDate = new Date();
+    private int deleted = 0;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "added_date")

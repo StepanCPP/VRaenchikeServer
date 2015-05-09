@@ -71,7 +71,7 @@ public class Place {
         return super.hashCode();
     }
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "userplaces",  joinColumns = {
             @JoinColumn(name = "idPlace", nullable = false, updatable = false) },
             inverseJoinColumns = { @JoinColumn(name = "idUSer",
@@ -102,7 +102,8 @@ public class Place {
         jo.put("idPlace",id);
         jo.put("lng",lng);
         jo.put("lat",lat);
-        jo.put("place_name",name);
+        jo.put("radius",this.radius);
+        jo.put("placeName",name);
         return jo;
 
     }

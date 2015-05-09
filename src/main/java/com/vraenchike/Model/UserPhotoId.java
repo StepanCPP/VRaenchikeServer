@@ -2,6 +2,7 @@ package com.vraenchike.Model;
 
 import org.hibernate.annotations.ManyToAny;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Embeddable;
 import javax.persistence.ManyToOne;
 import java.io.Serializable;
@@ -15,7 +16,7 @@ public class UserPhotoId implements Serializable {
     private User u;
     private Photo p;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     public User getU() {
         return u;
     }
@@ -23,7 +24,7 @@ public class UserPhotoId implements Serializable {
     public void setU(User u) {
         this.u = u;
     }
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     public Photo getP() {
         return p;
     }

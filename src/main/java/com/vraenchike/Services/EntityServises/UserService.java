@@ -50,9 +50,11 @@ public class UserService {
         //        String login = SecurityContextHolder.getContext().getAuthentication().getName();
 
        // String login = lastRegisterUserLogin;
-        String login =  SecurityContextHolder.getContext().getAuthentication().getName();
+        //String login =  SecurityContextHolder.getContext().getAuthentication().getName();
 //        SecurityContextHolder.getContext().getAuthentication().getAuthorities();
-       String hql = "from User where userLoginInfo.login = :login_name";
+
+        String login = "wassya";
+        String hql = "from User where userLoginInfo.login = :login_name";
         Query query = session.createQuery(hql);
         query.setParameter("login_name",login);
 
@@ -68,22 +70,22 @@ public class UserService {
 
     }
 
-    public Photo AddFavoritePhoto( String url) throws SQLException, UserNotAuth {
-       return AddPhoto(url,"f");
+    public Photo AddFavoritePhoto( String url,String idApi,String ApiType) throws SQLException, UserNotAuth, PhotoAlreadyAddedeException {
+       return AddPhoto(url,idApi,ApiType,"f");
     }
-    public Photo RemoveFavoritePhoto(String url) throws SQLException, UserNotAuth, PhotoNotFoundException {
-       return RemovePhoto(url,"f");
+    public Photo RemoveFavoritePhoto(Integer id) throws SQLException, UserNotAuth, PhotoNotFoundException {
+       return RemovePhoto(id,"f");
 
     }
 
-    public void AddLikePhoto(String url) throws SQLException, UserNotAuth {
-        AddPhoto(url,"l");
+    public void AddLikePhoto(String url,String idApi,String ApiType) throws SQLException, UserNotAuth, PhotoAlreadyAddedeException {
+        AddPhoto(url,idApi,ApiType,"l");
     }
-    public void RemoveLikePhoto( String url) throws SQLException, UserNotAuth, PhotoNotFoundException {
-        RemovePhoto(url,"l");
+    public void RemoveLikePhoto(Integer id) throws SQLException, UserNotAuth, PhotoNotFoundException {
+        RemovePhoto(id,"l");
     }
 
-    private Photo AddPhoto(String url,String type) throws SQLException, UserNotAuth {
+    private Photo AddPhoto(String url,String idApi, String ApiType,String type) throws SQLException, UserNotAuth, PhotoAlreadyAddedeException {
         Session session = HibernateUtil.getSessionFactory().openSession();
 
         User user = getCurrentUser(session);
@@ -100,7 +102,7 @@ public class UserService {
                 .uniqueResult();
 
         if (p == null){
-            p = new Photo(url,0,0);
+            p = new Photo(url,idApi,ApiType,0,0);
         }
 
         UserPhoto userPhoto = new UserPhoto();
@@ -112,14 +114,18 @@ public class UserService {
 
         session.save(user);
         session.save(p);
-        session.getTransaction().commit();
+        try {
+            session.getTransaction().commit();
+        }catch (org.hibernate.NonUniqueObjectException e){
+            throw new PhotoAlreadyAddedeException();
+        }
         if (session != null && session.isOpen())
             session.close();
 
         return p;
 
     }
-    private Photo RemovePhoto(String url,String type) throws SQLException, PhotoNotFoundException, UserNotAuth {
+    private Photo   RemovePhoto(Integer id,String type) throws SQLException, PhotoNotFoundException, UserNotAuth {
         Session session = HibernateUtil.getSessionFactory().openSession();
         User user = getCurrentUser(session);
         if(user==null){
@@ -135,7 +141,7 @@ public class UserService {
         Iterator<UserPhoto> it = user.getUserPhoto().iterator();
         while(it.hasNext()){
             UserPhoto us = it.next();
-            if(us.getPhoto().getUrl().equals(url) && Objects.equals(us.getType(), "f")){
+            if(us.getPhoto().getId()==id && Objects.equals(us.getType(), "f")){
                 //it.remove();
                 us.setDeleted(1);
                 session.save(us);
