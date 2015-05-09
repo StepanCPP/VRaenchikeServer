@@ -2,44 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4d616cf9-aa0d-4dc7-b4b1-b6c1e8997386" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/vraenchike/Exception/BannedNotFoundException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/vraenchike/Model/Likes.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/vraenchike/Exception/PhotoAlreadyAddedeException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/vraenchike/Exception/PhotoAlreadyDisliked.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/vraenchike/Exception/PhotoAlreadyLiked.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/vraenchike/Controller/PhotoController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/vraenchike/Controller/PhotoFavoriteController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/vraenchike/Exception/PhotoNotFoundException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/vraenchike/Exception/PlaceNotExist.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/vraenchike/Controller/PlacesController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/vraenchike/SimpleCORSFilter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/vraenchike/Services/ApiUtil/Status.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/vraenchike/Exception/UserAlreadyBannedException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/vraenchike/Exception/UserNotAuth.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/vraenchike/Tests/UserPhotoTEst.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/vraenchike/Tests/testBan.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/vraenchike/Tests/testFavoritePlace.java" />
-      <change type="DELETED" beforePath="C:\Users\Alexeev\IdeaProjects\VRaenchike\out\artifacts\VRaenchike_war_exploded\WEB-INF\lib\spring-security-config-3.2.0.RELEASE.jar" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Alexeev\IdeaProjects\VRaenchike\out\artifacts\VRaenchike_war_exploded\WEB-INF\lib\spring-security-core-3.2.0.RELEASE.jar" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Alexeev\IdeaProjects\VRaenchike\out\artifacts\VRaenchike_war_exploded\WEB-INF\lib\spring-security-web-3.2.0.RELEASE.jar" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Alexeev\IdeaProjects\VRaenchike\src\main\java\com\vraenchike\Services\MyUserDetailsService.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/vraenchike/Services/ApiUtil/ApiError.java" afterPath="$PROJECT_DIR$/src/main/java/com/vraenchike/Services/ApiUtil/ApiError.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/vraenchike/Model/Banned.java" afterPath="$PROJECT_DIR$/src/main/java/com/vraenchike/Model/Banned.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/vraenchike/Controller/BannedController.java" afterPath="$PROJECT_DIR$/src/main/java/com/vraenchike/Controller/BannedController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/MANIFEST.MF" afterPath="$PROJECT_DIR$/target/MANIFEST.MF" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/vraenchike/Model/Photo.java" afterPath="$PROJECT_DIR$/src/main/java/com/vraenchike/Model/Photo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/vraenchike/Services/EntityServises/PhotoService.java" afterPath="$PROJECT_DIR$/src/main/java/com/vraenchike/Services/EntityServises/PhotoService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/vraenchike/Model/Place.java" afterPath="$PROJECT_DIR$/src/main/java/com/vraenchike/Model/Place.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/vraenchike/Services/EntityServises/PlaceService.java" afterPath="$PROJECT_DIR$/src/main/java/com/vraenchike/Services/EntityServises/PlaceService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/vraenchike/Model/User.java" afterPath="$PROJECT_DIR$/src/main/java/com/vraenchike/Model/User.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/vraenchike/Model/UserPhoto.java" afterPath="$PROJECT_DIR$/src/main/java/com/vraenchike/Model/UserPhoto.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/vraenchike/Model/UserPhotoId.java" afterPath="$PROJECT_DIR$/src/main/java/com/vraenchike/Model/UserPhotoId.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/vraenchike/Services/EntityServises/UserService.java" afterPath="$PROJECT_DIR$/src/main/java/com/vraenchike/Services/EntityServises/UserService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/vraenchike/Tests/UserServiceTest.java" afterPath="$PROJECT_DIR$/src/main/java/com/vraenchike/Tests/UserServiceTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/spring-security.xml" afterPath="$PROJECT_DIR$/web/WEB-INF/spring-security.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/VRaenchike_war_exploded/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/out/artifacts/VRaenchike_war_exploded/WEB-INF/web.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/web/WEB-INF/web.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/vraenchike/Controller/PhotoController.java" afterPath="$PROJECT_DIR$/src/main/java/com/vraenchike/Controller/PhotoController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/VRaenchike.iml" afterPath="$PROJECT_DIR$/VRaenchike.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="VRaenchike.iws" />
@@ -114,8 +80,18 @@
       <file leaf-file-name="PhotoController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Controller/PhotoController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1652" max-vertical-offset="2376">
-              <caret line="102" column="38" selection-start-line="102" selection-start-column="38" selection-end-line="102" selection-end-column="38" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="3366" max-vertical-offset="3960">
+              <caret line="194" column="34" selection-start-line="194" selection-start-column="27" selection-end-line="194" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ApiError.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Services/ApiUtil/ApiError.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="2134" max-vertical-offset="2728">
+              <caret line="99" column="22" selection-start-line="99" selection-start-column="22" selection-end-line="99" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -125,7 +101,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Tests/UserPhotoTEst.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="3236" max-vertical-offset="3872">
-              <caret line="173" column="24" selection-start-line="173" selection-start-column="24" selection-end-line="173" selection-end-column="24" />
+              <caret line="172" column="13" selection-start-line="172" selection-start-column="13" selection-end-line="172" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -134,8 +110,8 @@
       <file leaf-file-name="BannedController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Controller/BannedController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3938619" vertical-offset="2024" max-vertical-offset="2640">
-              <caret line="118" column="19" selection-start-line="118" selection-start-column="19" selection-end-line="118" selection-end-column="19" />
+            <state vertical-scroll-proportion="0.3375959" vertical-offset="2046" max-vertical-offset="2640">
+              <caret line="118" column="20" selection-start-line="118" selection-start-column="20" selection-end-line="118" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -144,8 +120,8 @@
       <file leaf-file-name="Photo.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Model/Photo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1254" max-vertical-offset="2618">
-              <caret line="51" column="35" selection-start-line="51" selection-start-column="35" selection-end-line="51" selection-end-column="35" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="264" max-vertical-offset="2618">
+              <caret line="35" column="24" selection-start-line="35" selection-start-column="24" selection-end-line="35" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -156,28 +132,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="1122" max-vertical-offset="1914">
               <caret line="35" column="35" selection-start-line="35" selection-start-column="35" selection-end-line="35" selection-end-column="40" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Services/EntityServises/UserService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.8965516" vertical-offset="1244" max-vertical-offset="6600">
-              <caret line="73" column="46" selection-start-line="73" selection-start-column="46" selection-end-line="73" selection-end-column="46" />
-              <folding>
-                <marker date="1431167405791" expanded="true" signature="7596:7688" placeholder="select COUNT..banned..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PlacesController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Controller/PlacesController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1637" max-vertical-offset="2244">
-              <caret line="34" column="10" selection-start-line="34" selection-start-column="10" selection-end-line="34" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -198,16 +152,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="2271" max-vertical-offset="3476">
               <caret line="130" column="56" selection-start-line="130" selection-start-column="56" selection-end-line="130" selection-end-column="56" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PlaceService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Services/EntityServises/PlaceService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1193" max-vertical-offset="2398">
-              <caret line="74" column="29" selection-start-line="74" selection-start-column="28" selection-end-line="74" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -258,20 +202,20 @@
         <option value="$PROJECT_DIR$/src/main/java/com/vraenchike/Tests/testFavoritePlace.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/vraenchike/Services/EntityServises/PlaceService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/vraenchike/Exception/PhotoAlreadyAddedeException.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/vraenchike/Services/ApiUtil/ApiError.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/vraenchike/Model/User.java" />
         <option value="$PROJECT_DIR$/web/WEB-INF/spring-security.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/vraenchike/Model/Place.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/vraenchike/SimpleCORSFilter.java" />
         <option value="$PROJECT_DIR$/web/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/vraenchike/Controller/PlacesController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/vraenchike/Model/Photo.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/vraenchike/Services/EntityServises/UserService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/vraenchike/Controller/PhotoFavoriteController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/vraenchike/Services/EntityServises/PhotoService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/vraenchike/Tests/UserServiceTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/vraenchike/Controller/PhotoController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/vraenchike/Tests/UserPhotoTEst.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/vraenchike/Services/ApiUtil/ApiError.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/vraenchike/Model/Photo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/vraenchike/Controller/PhotoController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/vraenchike/Controller/BannedController.java" />
       </list>
     </option>
@@ -1441,7 +1385,7 @@
       <workItem from="1430922212427" duration="142000" />
       <workItem from="1431030015094" duration="5642000" />
       <workItem from="1431089142723" duration="7858000" />
-      <workItem from="1431162799910" duration="3040000" />
+      <workItem from="1431162799910" duration="8035000" />
     </task>
     <task id="LOCAL-00001" summary="inital commit">
       <created>1428269737959</created>
@@ -1521,11 +1465,17 @@
       <option name="project" value="LOCAL" />
       <updated>1430739272767</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Добавил в Photo поле :1) Тип(места,вк)">
+      <created>1431170171438</created>
+      <option name="number" value="00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1431170171438</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="116825000" />
+    <option name="totallyTimeSpent" value="121820000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -1538,7 +1488,7 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32913387" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1420205" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18374817" sideWeight="0.49840257" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.040263545" sideWeight="0.49840257" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1553,7 +1503,7 @@
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901135" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3784773" sideWeight="0.5007874" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2796486" sideWeight="0.4992126" order="5" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34040996" sideWeight="0.4992126" order="5" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1597,7 +1547,8 @@
     <MESSAGE value="BannedController" />
     <MESSAGE value="PlaceController" />
     <MESSAGE value="Добавил в Photo поле :1) Тип(места,вк)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавил в Photo поле :1) Тип(места,вк)" />
+    <MESSAGE value="+info about photo&#10;https://trello.com/c/eIyuZiEn/44--" />
+    <option name="LAST_COMMIT_MESSAGE" value="+info about photo&#10;https://trello.com/c/eIyuZiEn/44--" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1651,7 +1602,7 @@
           <option name="timeStamp" value="76" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="99" />
+      <option name="time" value="105" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1843,13 +1794,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.0.6.RELEASE/spring-webmvc-4.0.6.RELEASE.jar!/org/springframework/web/servlet/DispatcherServlet.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4534413" vertical-offset="7764" max-vertical-offset="15356">
-          <caret line="422" column="31" selection-start-line="422" selection-start-column="31" selection-end-line="422" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/vraenchike_db_v1.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3608">
@@ -1886,25 +1830,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.0.6.RELEASE/spring-web-4.0.6.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3319838" vertical-offset="2360" max-vertical-offset="3652">
-          <caret line="130" column="19" selection-start-line="130" selection-start-column="19" selection-end-line="130" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Exception/PhotoAlreadyAddedeException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.22222222" vertical-offset="0" max-vertical-offset="682">
           <caret line="6" column="42" selection-start-line="6" selection-start-column="42" selection-end-line="6" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Services/ApiUtil/ApiError.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1650" max-vertical-offset="2596">
-          <caret line="92" column="40" selection-start-line="92" selection-start-column="40" selection-end-line="92" selection-end-column="40" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2042,7 +1971,7 @@
         <state vertical-scroll-proportion="-4.8965516" vertical-offset="1244" max-vertical-offset="6600">
           <caret line="73" column="46" selection-start-line="73" selection-start-column="46" selection-end-line="73" selection-end-column="46" />
           <folding>
-            <marker date="1431167405791" expanded="true" signature="7596:7688" placeholder="select COUNT..banned..." />
+            <marker date="1431167405791" expanded="true" signature="-1:-1" placeholder="select COUNT..banned..." />
           </folding>
         </state>
       </provider>
@@ -2063,30 +1992,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Controller/PhotoController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1652" max-vertical-offset="2376">
-          <caret line="102" column="38" selection-start-line="102" selection-start-column="38" selection-end-line="102" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Tests/UserPhotoTEst.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3236" max-vertical-offset="3872">
-          <caret line="173" column="24" selection-start-line="173" selection-start-column="24" selection-end-line="173" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Model/Photo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1254" max-vertical-offset="2618">
-          <caret line="51" column="35" selection-start-line="51" selection-start-column="35" selection-end-line="51" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Controller/PhotoFavoriteController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1122" max-vertical-offset="1914">
@@ -2095,10 +2000,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Model/Photo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="264" max-vertical-offset="2618">
+          <caret line="35" column="24" selection-start-line="35" selection-start-column="24" selection-end-line="35" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Tests/UserPhotoTEst.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3236" max-vertical-offset="3872">
+          <caret line="172" column="13" selection-start-line="172" selection-start-column="13" selection-end-line="172" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Services/ApiUtil/ApiError.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2337" max-vertical-offset="2728">
+          <caret line="99" column="22" selection-start-line="99" selection-start-column="22" selection-end-line="99" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.0.6.RELEASE/spring-webmvc-4.0.6.RELEASE.jar!/org/springframework/web/servlet/DispatcherServlet.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.36437246" vertical-offset="7764" max-vertical-offset="15356">
+          <caret line="421" column="19" selection-start-line="421" selection-start-column="19" selection-end-line="421" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.0.6.RELEASE/spring-web-4.0.6.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.36437246" vertical-offset="2352" max-vertical-offset="3652">
+          <caret line="130" column="19" selection-start-line="130" selection-start-column="19" selection-end-line="130" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Controller/PhotoController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3366" max-vertical-offset="3960">
+          <caret line="194" column="34" selection-start-line="194" selection-start-column="27" selection-end-line="194" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/vraenchike/Controller/BannedController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3938619" vertical-offset="2024" max-vertical-offset="2640">
-          <caret line="118" column="19" selection-start-line="118" selection-start-column="19" selection-end-line="118" selection-end-column="19" />
+        <state vertical-scroll-proportion="0.3375959" vertical-offset="2046" max-vertical-offset="2640">
+          <caret line="118" column="20" selection-start-line="118" selection-start-column="20" selection-end-line="118" selection-end-column="20" />
           <folding />
         </state>
       </provider>

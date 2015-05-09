@@ -12,7 +12,8 @@ public enum     ApiError {
     USER_IS_BANNED_ALREADY, PHOTO_IS_BANNED_ALREADY,
     PLACE_IS_BANNED_ALREADY, USER_IS_FAVORED_ALREADY, PHOTO_IS_FAVORED_ALREADY,
     PLACE_IS_FAVORED_ALREADY,THIS_PHOTO_IS_ALREADY_LIKED,THIS_PHOTO_IS_ALREADY_DISLIKED,
-    USER_NOT_AUTH,BANNED_NOT_FOUND,USER_ALREADY_BANNED,PHOTO_FAVORITE_ALREADY;
+    USER_NOT_AUTH,BANNED_NOT_FOUND,USER_ALREADY_BANNED,PHOTO_FAVORITE_ALREADY,
+    BAD_JSON_REQUEST;
 
     public int getCode(){
         String toReturn = null;
@@ -94,6 +95,11 @@ public enum     ApiError {
                 toReturn="19";
                 break;
             }
+            case BAD_JSON_REQUEST:{
+                toReturn="20";
+                break;
+            }
+
 
 
 
