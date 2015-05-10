@@ -119,9 +119,7 @@ public class Photo implements Comparable<Photo> {
 
         Photo photo = (Photo) o;
 
-        if (dislikes != photo.dislikes) return false;
         if (id != photo.id) return false;
-        if (likes != photo.likes) return false;
         if (ApiServiceType != null ? !ApiServiceType.equals(photo.ApiServiceType) : photo.ApiServiceType != null)
             return false;
         if (idApiServices != null ? !idApiServices.equals(photo.idApiServices) : photo.idApiServices != null)

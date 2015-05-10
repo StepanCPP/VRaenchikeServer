@@ -81,13 +81,7 @@ public class PhotoFavoriteController {
         Status status = new Status();
         status.setCode(0);
         try {
-            Collection collection = photoService.GetFavoritePhotos(offset, count);
-            Iterator<Photo> iterator = collection.iterator();
-            JSONArray array = new JSONArray();
-            while (iterator.hasNext()){
-                array.put(iterator.next().toJSONObject());
-            }
-
+            JSONArray array = photoService.GetFavoritePhotos(offset, count);
             status.setMessage(array.toString());
         } catch (UserNotAuth userNotAuth) {
             ApiError error = ApiError.USER_NOT_AUTH;

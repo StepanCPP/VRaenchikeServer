@@ -9,6 +9,8 @@ import com.vraenchike.Util.HibernateUtil;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.sql.SQLException;
 import java.util.*;
@@ -17,11 +19,15 @@ import java.util.*;
  * Created by Artyom on 23.04.2015.
  */
 public class PhotoService {
-    public Collection GetFavoritePhotos( int offset,int count) throws SQLException, UserNotAuth {
+    public JSONArray GetFavoritePhotos( int offset,int count) throws SQLException, UserNotAuth, JSONException {
             int counter = 0;
         Session session = HibernateUtil.getSessionFactory().openSession();
         User user = UserService.getCurrentUser(session);
+
+
         if(user==null){
+
+
             if (session != null && session.isOpen())
                 session.close();
             throw new UserNotAuth();
@@ -30,8 +36,17 @@ public class PhotoService {
 
 
         Set<Photo> favoritePhoto = user.getFavoritePhoto(offset, count);
+
+
+
+        Iterator<Photo> iterator = favoritePhoto.iterator();
+        JSONArray array = new JSONArray();
+        while (iterator.hasNext()){
+            array.put(iterator.next().toJSONObject());
+        }
+
         session.close();
-        return favoritePhoto;
+        return array;
     }
 
 
@@ -171,6 +186,9 @@ public class PhotoService {
         int currentLikes = p.getLikes();
         if(currentLikes>0)
         p.setLikes(currentLikes-1);
+
+
+        user.getPhoto().remove(p);
         session.save(photoLike);
         session.save(p);
         session.flush();

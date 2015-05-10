@@ -99,6 +99,7 @@ public class PhotoController {
         } else {
             credential = curUser.getUserLoginInfo().getLogin();
         }
+        session.close();
         try {
             Photo photo = photoService.DislikePhoto(url,idApi,apiType,credential, isuser);
             status.setMessage(photo.toJSONObject().toString());
@@ -118,7 +119,7 @@ public class PhotoController {
         } catch (PhotoNotFoundException e) {
             return ApiError.PHOTO_NOT_FOUND.toStatus().toJSONObject().toString();
         }
-        session.close();
+
         return status.toJSONObject().toString();
     }
 
@@ -191,7 +192,7 @@ public class PhotoController {
         }
         return status.toJSONObject().toString();
     }
-    private JSONArray photoTominimizeInfoArray(Collection list,Set<Integer> likedCurrentUserPhotos) throws JSONException {
+   public static JSONArray photoTominimizeInfoArray(Collection list,Set<Integer> likedCurrentUserPhotos) throws JSONException {
         JSONArray Photos = new JSONArray();
         for(Object o : list){
             Photo p = (Photo) o;
